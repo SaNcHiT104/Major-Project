@@ -1,0 +1,35 @@
+.Doctorfaq
+{
+    text-align: justify;
+    padding-left:40px;
+}
+.faq
+{
+    color:#58595B;
+    margin: 30px 0;
+    font-size: 15px;
+    width: 60%;
+    font-weight: 500;
+    line-height: 1.7;
+    text-align: justify;
+    margin-left: 30px;
+    padding-bottom:15px;
+    
+}
+.faqhead
+{
+    padding-top: 40px;
+    text-align: center;
+    font-size: 40px;
+    color:#333333;
+    padding-bottom: 30px;
+}
+.faqquestion
+{
+    font-family: sharp-sans-semibold, fallback-font, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-transform: none;
+    color:#333333;
+}

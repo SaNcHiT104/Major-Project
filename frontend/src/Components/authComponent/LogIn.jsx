@@ -4,7 +4,7 @@ export default function Login({ state, handlePatient, handleDoctor }) {
   let content;
 
   const [sign, siginClicked] = useState(false);
-  console.log(sign);
+  // console.log(sign);
   //formvalidation
   const [formData, changeFormData] = useState({
     email: "",
@@ -64,7 +64,7 @@ export default function Login({ state, handlePatient, handleDoctor }) {
     (formData.password.length >= 8 && !formData.password.includes("password"));
   const confirmPassisCorrect =
     typed.confirmpassword &&
-    formData.password !== formData.confirmpassword &&
+    formData.password != formData.confirmpassword &&
     sign;
   // console.log(typed.password + " " + formData.password.length);
   content = (
@@ -157,13 +157,13 @@ export default function Login({ state, handlePatient, handleDoctor }) {
     <>
       <p
         className={classes.heading_primary}
-        id={state === "PATIENT" && classes.heading_primary}
+        id={state == "PATIENT" && classes.heading_primary}
       >
         {!sign ? "Welcome back!" : "Sign up today!"}
       </p>
       <p className={classes.paragraph}>
-        {!sign === true ? "Log" : "Sign"} in to your account and we'll get you in
-        to see our {state === "PATIENT" ? "Doctors!" : "Patient!"}
+        {!sign == true ? "Log" : "Sign"} in to your account and we'll get you in
+        to see our {state == "PATIENT" ? "Doctors!" : "Patient!"}
       </p>
     </>
   );
@@ -174,14 +174,14 @@ export default function Login({ state, handlePatient, handleDoctor }) {
         <div class={classes.button_container}>
           <button
             className={classes.customer_button}
-            id={state === "PATIENT" && classes.btnactive}
+            id={state == "PATIENT" && classes.btnactive}
             onClick={handleP}
           >
             Patient
           </button>
           <button
             className={classes.doctor_button}
-            id={state === "DOCTOR" && classes.btnactive}
+            id={state == "DOCTOR" && classes.btnactive}
             onClick={handleD}
           >
             Doctor

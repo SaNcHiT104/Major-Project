@@ -1,0 +1,19 @@
+.navbar
+{
+    /* background-color: red; */
+    width:100%;
+    color:grey;
+}
+.navlist
+{
+    width:100%;
+    display:flex;
+    justify-content: flex-start;
+}
+.navlist li{
+    margin-right: 25px;
+}
+.navlist li:hover{
+    color:red;
+}
+

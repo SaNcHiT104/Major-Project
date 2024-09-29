@@ -22,14 +22,14 @@ export default function WelcomePage() {
     );
   } else data = <Admin />;
   let content;
-  if (state === "PATIENT") {
+  if (state == "PATIENT") {
     content = (
       <>
         <div className={classes.heading_primary}>
-          <p>Welcome {click === "user" ? "to Website !" : "Admin"}</p>
+          <p>Welcome {click == "user" ? "to Website !" : "Admin"}</p>
         </div>
         <div className={classes.heading_secondary}>
-          {click === "user" && (
+          {click == "user" && (
             <p>
               Simplify your health journey. Find, book, and prioritize your
               well-being effortlessly with our user-friendly platform. Discover
@@ -43,10 +43,10 @@ export default function WelcomePage() {
     content = (
       <>
         <div className={classes.heading_primary}>
-          <p>Welcome {click === "user" ? "to Website !" : "Admin!"}</p>
+          <p>Welcome {click == "user" ? "to Website !" : "Admin!"}</p>
         </div>
         <div className={classes.heading_secondary}>
-          {click === "user" && (
+          {click == "user" && (
             <p>
               Effortlessly manage your patient appointments and records with our
               secure online platform. Login today to streamline your medical
@@ -66,7 +66,7 @@ export default function WelcomePage() {
             <div class={classes.button_container}>
               <button
                 className={classes.btn}
-                id={click === "user" && classes.btnactive}
+                id={click == "user" && classes.btnactive}
                 onClick={() => {
                   changeUserClick("user");
                 }}
@@ -75,7 +75,7 @@ export default function WelcomePage() {
               </button>
               <button
                 className={classes.btn}
-                id={click === "admin" && classes.btnactive}
+                id={click == "admin" && classes.btnactive}
                 onClick={() => {
                   changeUserClick("admin");
                 }}
