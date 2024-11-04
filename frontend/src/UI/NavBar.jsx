@@ -6,16 +6,44 @@ export default function NavBar() {
       <img src="" alt="Logo"></img>
       <div className={classes.innerContainer}>
         <button className={classes.allnav}>
-          <span>Home</span>
+          <NavLink
+            to="/patient/me/home"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <span>Home</span>
+          </NavLink>
         </button>
         <button className={classes.allnav}>
-          <span>Find a Doctor</span>
+          <NavLink
+            to="/patient/me/findAdoctor"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <span>Find a Doctor</span>
+          </NavLink>
         </button>
         <button className={classes.allnav}>
-          <span>Education</span>{" "}
+          <NavLink
+            to="/patient/me/education"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <span>Education</span>
+          </NavLink>
         </button>
         <button className={classes.allnav}>
-          <span>Profile</span>
+          <NavLink
+            to="/patient/me/profile"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <span>Profile</span>
+          </NavLink>
         </button>
       </div>
       <div className={classes.logout}>

@@ -2,6 +2,7 @@ import chalk from "chalk";
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
+import { createJSONToken } from "../../AuthManager/auth.js";
 
 const patientSchema = new mongoose.Schema({
   email: {
@@ -35,7 +36,14 @@ const patientSchema = new mongoose.Schema({
     },
   },
   address: { type: String, trim: true },
+  tokens: {
+    token: {
+      type: String,
+    },
+    default: {},
+  },
 });
+
 // hash the user password before saving
 patientSchema.pre("save", async function (next) {
   const user = this;
@@ -45,9 +53,31 @@ patientSchema.pre("save", async function (next) {
   next();
 });
 
+// method to send the data we want to send, removing password and tokens from the object
+patientSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  delete userObject.tokens;
+  return userObject;
+};
+
+// method for generating auth Tokens
+patientSchema.methods.generateAuthToken = async function () {
+  const user = this;
+  const token = createJSONToken({
+    _id: user._id.toString(),
+    userType: "PATIENT",
+  });
+  // we are also going to store the token in the database, and overwrite it if one already exists
+  user.tokens = { token };
+  await user.save();
+  return token;
+};
+
 // check user credentials using compare method of bcrypt
 patientSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
+  const user = await Patient.findOne({ email });
 
   if (!user) {
     return null;
@@ -59,5 +89,5 @@ patientSchema.statics.findByCredentials = async (email, password) => {
   return user;
 };
 
-const User = mongoose.model("Patient", patientSchema);
-export default User;
+const Patient = mongoose.model("Patient", patientSchema);
+export default Patient;

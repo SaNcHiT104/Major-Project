@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import classes from "./FrontPage.module.css";
 // import img from "../../assets/headerimage.jpg";
 export default function FrontPage() {
@@ -17,7 +18,9 @@ export default function FrontPage() {
               and social well being. It's not just about treatment, it's about
               healing.
             </p>
-            <button className={classes.findDoctor}>Find a Doctor</button>
+            <NavLink to="/patient/me/findAdoctor">
+              <button className={classes.findDoctor}>Find A doctor</button>
+            </NavLink>
           </div>
         </div>
         {/* <img src={img} className={classes.right} /> */}

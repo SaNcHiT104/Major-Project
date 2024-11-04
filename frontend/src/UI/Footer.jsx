@@ -1,15 +1,44 @@
 import classes from "./Footer.module.css";
 // import "./Footer.module.css";
+import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <div className={classes.container}>
       <div className={classes.upContainer}>
         <div className={classes.menu}>
           <p className={classes.head}>Menu</p>
-          <button className={classes.btn}>Home</button>
-          <button className={classes.btn}>Find a Doctor</button>
-          <button className={classes.btn}>Eduction</button>
-          <button className={classes.btn}>Profile</button>
+          <NavLink
+            to="/patient/me/home"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <button className={classes.btn}>Home</button>
+          </NavLink>
+          <NavLink
+            to="/patient/me/findAdoctor"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <button className={classes.btn}>Find a Doctor</button>
+          </NavLink>
+          <NavLink
+            to="/patient/me/education"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <button className={classes.btn}>Eduction</button>
+          </NavLink>
+          <NavLink
+            to="/patient/me/profile"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <button className={classes.btn}>Profile</button>
+          </NavLink>
         </div>
         <div className={classes.menu}>
           <p className={classes.head}>Contact</p>

@@ -5,10 +5,10 @@ import SecondComponent from "./SecondComponent";
 export default function Header() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <FrontPage />
       <SecondComponent />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

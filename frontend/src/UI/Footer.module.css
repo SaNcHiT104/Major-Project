@@ -87,6 +87,13 @@
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
 }
+.active {
+  color: blue;
+  font-weight: 550;
+  border-bottom: 1px solid blue;
+  padding-bottom: 3px;
+  width: 3rem;
+}
 .downPara {
   margin-left: 5rem;
   margin-top: 1rem;

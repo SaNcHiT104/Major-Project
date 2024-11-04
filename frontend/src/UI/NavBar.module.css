@@ -50,7 +50,12 @@
   right: -15px;
   transition: 0.5s;
 }
-
+.active {
+  /* font-weight: 550; */
+  color: rgb(54, 51, 207);
+  border-bottom: 2px solid rgb(54, 51, 207);
+  padding-bottom: 4px;
+}
 .allnav:hover span {
   color: blue;
   padding-right: 15px;

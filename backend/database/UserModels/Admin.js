@@ -2,6 +2,7 @@ import chalk from "chalk";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import { createJSONToken } from "../../AuthManager/auth.js";
 
 const adminSchema = new mongoose.Schema({
   email: {
@@ -30,7 +31,26 @@ const adminSchema = new mongoose.Schema({
         );
     },
   },
+  tokens: {
+    token: {
+      type: String,
+    },
+    default: {}
+  },
 });
+
+// method for generating auth Tokens
+adminSchema.methods.generateAuthToken = async function () {
+  const user = this;
+  const token = createJSONToken({
+    _id: user._id.toString(),
+    userType: "ADMIN",
+  });
+  // we are also going to store the token in the database, and overwrite it if one already exists
+  user.tokens = { token };
+  await user.save();
+  return token;
+};
 
 // check user credentials using compare method of bcrypt
 adminSchema.statics.findByCredentials = async (email, password) => {
