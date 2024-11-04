@@ -1,5 +1,5 @@
 import AppointMentHeader from "./AppointMentHeader";
-import classes from "./AppointMent.module.css";
+import classes from "./Appointment.module.css";
 import AppointmentCard from "./AppointmentCard";
 export default function Appointment() {
   return (

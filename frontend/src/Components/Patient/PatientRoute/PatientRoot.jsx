@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../../../UI/NavBar";
 import Footer from "../../../UI/Footer";
-import { useState } from "react";
+
 function PatientRoot() {
   return (
     <>

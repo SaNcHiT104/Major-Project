@@ -3,7 +3,6 @@ import { useState } from "react";
 import image from "../../../assets/patient.webp";
 import maleImage from "../../../assets/maleProfile.avif";
 import femaleImage from "../../../assets/femaleProfile.jpg";
-import Footer from "../../../UI/Footer";
 
 export default function PatientProfile() {
   const [isEdit, changeIsEdit] = useState(true);
@@ -12,14 +11,6 @@ export default function PatientProfile() {
       alert("Please enter correct details");
     } else {
       changeIsEdit(!isEdit);
-    }
-  }
-  function checkAll() {
-    if (formData.allergy.length == 0) {
-      changeFormData((prev) => ({
-        ...prev,
-        allergy: "None",
-      }));
     }
   }
   const [formData, changeFormData] = useState({
@@ -32,28 +23,6 @@ export default function PatientProfile() {
     age: "",
     allergies: "",
   });
-  function resetAll() {
-    changeFormData((prev) => ({
-      name: "",
-      contact: "",
-      email: "",
-      address: "",
-      gender: "",
-      dateOfBirth: "",
-      age: "",
-      allergies: "",
-    }));
-    handleTyped((prev) => ({
-      name: false,
-      contact: false,
-      email: false,
-      address: false,
-      gender: false,
-      dateOfBirth: false,
-      age: false,
-      allergies: false,
-    }));
-  }
   const [typed, handleTyped] = useState({
     name: false,
     contact: false,
@@ -78,20 +47,19 @@ export default function PatientProfile() {
   const checkmail = typed.email && !formData.email.includes("@");
   const contactCheck =
     typed.contact &&
-    (formData.contact.length != 10 || formData.contact.charAt(0) == "0");
+    (formData.contact.length !== 10 || formData.contact.charAt(0) === "0");
   const checkGender =
     typed.gender &&
     !(
       formData.gender.toLowerCase() === "male" ||
-      formData.gender.toLowerCase() == "female"
+      formData.gender.toLowerCase() === "female"
     );
   const checkAge = typed.age && formData.age <= 0;
   const checkAddrss = typed.address && formData.address.length === 0;
-  const allergy = formData.allergies.length === 0;
   const submitcheck =
     formData.email.includes("@") &&
     formData.contact.length === 10 &&
-    !formData.contact.charAt(0) == "0" &&
+    !formData.contact.charAt(0) === "0" &&
     formData.age >= 0 &&
     formData.address.length >= 0 &&
     (formData.gender.toLowerCase() === "male" ||
