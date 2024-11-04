@@ -1,8 +1,9 @@
+import { useState } from "react";
 import classes from "./WelcomePage.module.css";
 import LogIn from "./LogIn";
 import Admin from "./Admin";
-import { useState } from "react";
-export default function WelcomePage() {
+
+function WelcomePage() {
   const [state, changeState] = useState("PATIENT");
   function handlePatient() {
     changeState("PATIENT");
@@ -21,15 +22,17 @@ export default function WelcomePage() {
       />
     );
   } else data = <Admin />;
+
   let content;
-  if (state == "PATIENT") {
+
+  if (state === "PATIENT") {
     content = (
       <>
         <div className={classes.heading_primary}>
-          <p>Welcome {click == "user" ? "to Website !" : "Admin"}</p>
+          <p>Welcome {click === "user" ? "to Website !" : "Admin"}</p>
         </div>
         <div className={classes.heading_secondary}>
-          {click == "user" && (
+          {click === "user" && (
             <p>
               Simplify your health journey. Find, book, and prioritize your
               well-being effortlessly with our user-friendly platform. Discover
@@ -43,10 +46,10 @@ export default function WelcomePage() {
     content = (
       <>
         <div className={classes.heading_primary}>
-          <p>Welcome {click == "user" ? "to Website !" : "Admin!"}</p>
+          <p>Welcome {click === "user" ? "to Website !" : "Admin!"}</p>
         </div>
         <div className={classes.heading_secondary}>
-          {click == "user" && (
+          {click === "user" && (
             <p>
               Effortlessly manage your patient appointments and records with our
               secure online platform. Login today to streamline your medical
@@ -63,10 +66,10 @@ export default function WelcomePage() {
         <div className={classes.left}>
           <div className={classes.heading}>
             {content}
-            <div class={classes.button_container}>
+            <div className={classes.button_container}>
               <button
                 className={classes.btn}
-                id={click == "user" && classes.btnactive}
+                id={click === "user" ? classes.btnactive : undefined}
                 onClick={() => {
                   changeUserClick("user");
                 }}
@@ -75,7 +78,7 @@ export default function WelcomePage() {
               </button>
               <button
                 className={classes.btn}
-                id={click == "admin" && classes.btnactive}
+                id={click === "admin" ? classes.btnactive : undefined}
                 onClick={() => {
                   changeUserClick("admin");
                 }}
@@ -90,3 +93,5 @@ export default function WelcomePage() {
     </div>
   );
 }
+
+export default WelcomePage;

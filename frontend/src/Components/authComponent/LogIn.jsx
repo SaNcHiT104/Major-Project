@@ -1,75 +1,109 @@
+import { Link, json, useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
-import { useState, useRef } from "react";
-export default function Login({ state, handlePatient, handleDoctor }) {
-  let content;
+import { useState } from "react";
+import {
+  isEmailCorrect,
+  isPasswordCorrect,
+  isUserTypeCorrect,
+} from "./authHandler";
 
-  const [sign, siginClicked] = useState(false);
-  // console.log(sign);
+export default function Login({ state, handlePatient, handleDoctor }) {
+  const navigate = useNavigate();
   //formvalidation
   const [formData, changeFormData] = useState({
     email: "",
     password: "",
-    confirmpassword: "",
+    userType: state.toUpperCase(),
   });
-  function resetAll() {
-    changeFormData((prev) => ({
-      email: "",
-      password: "",
-      confirmpassword: "",
-    }));
-    handleTyped((prev) => ({
-      email: false,
-      password: false,
-      confirmpassword: false,
-    }));
-  }
-
-  function handleP() {
-    siginClicked(false);
-    handlePatient();
-    resetAll();
-  }
-  function handleD() {
-    siginClicked(false);
-    handleDoctor();
-    resetAll();
-  }
-  //blur
-  const [typed, handleTyped] = useState({
+  const [inputDataError, inputDataErrorHandler] = useState({
     email: false,
     password: false,
-    confirmpassword: false,
+    userType: false,
   });
-  function handleBlur(identifier) {
-    handleTyped((prev) => ({ ...prev, [identifier]: true }));
-  }
-  function onSubmit(event) {
+
+  const onSubmitHandler = async (event) => {
+    // implement fetch query for backend!
     event.preventDefault();
-    console.log(formData);
-  }
-  function handleChange(identifier, event) {
+    let errorDetected = false;
+    // validate the form data
+    if (!isEmailCorrect(formData.email)) {
+      errorDetected = true;
+      inputDataErrorHandler((prev) => ({
+        ...prev,
+        email: true,
+      }));
+    }
+    if (!isPasswordCorrect(formData.password)) {
+      errorDetected = true;
+      inputDataErrorHandler((prev) => ({
+        ...prev,
+        password: true,
+      }));
+    }
+    if (!isUserTypeCorrect(formData.userType)) {
+      errorDetected = true;
+      inputDataErrorHandler((prev) => ({
+        ...prev,
+        userType: true,
+      }));
+    }
+    // if validation fails, set the inputDataError acordingly
+    if (errorDetected) {
+      return;
+    }
+
+    // fetch query
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      body: JSON.stringify({
+        userEmail: formData.email,
+        userType: formData.userType,
+        password: formData.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // find the user in users array, if found, navigate to login, else show, INVALID CREDENTIALS
+    // users.find(formData);
+    // const user = users.find((obj) => {
+    //   return obj.email === formData.email && obj.password === formData.password;
+    // });
+
+    // if there are validation errors or invalid credentials!
+    if (response.status === 401) {
+      // we can return the response like this as react-router will automatically extract the data for us.
+      return response;
+    }
+
+    if (!response.ok) {
+      throw json({ message: "Could not authenticate user." }, { status: 500 });
+    }
+    const resData = await response.json();
+    // console.log("FORM DATA - " + formData.email);
+    console.log("LOGIN SUCCESSFUL!");
+    console.log(resData);
+    navigate("/patient/me/home");
+  };
+
+  function formDataChangeHandler(identifier, event) {
     changeFormData((prev) => ({
       ...prev,
-      [identifier]: event.target.value,
+      [identifier]: event.target.value.trim(),
     }));
-    handleTyped((prev) => ({ ...prev, [identifier]: false }));
   }
-  function handleSignInClicked() {
-    siginClicked(true);
-    resetAll();
-  }
-  const emailisCorrect = typed.email && !formData.email.includes("@");
-  const passisCorrect =
-    !typed.password ||
-    (formData.password.length >= 8 && !formData.password.includes("password"));
-  const confirmPassisCorrect =
-    typed.confirmpassword &&
-    formData.password != formData.confirmpassword &&
-    sign;
-  // console.log(typed.password + " " + formData.password.length);
-  content = (
+  // blur
+  // const [typed, handleTyped] = useState({
+  //   email: false,
+  //   password: false,
+  //   confirmpassword: false,
+  // });
+  // function handleBlur(identifier) {
+  //   handleTyped((prev) => ({ ...prev, [identifier]: true }));
+  // }
+  let content = (
     <>
-      <label for="email" className={classes.form_heading}>
+      <label htmlFor="email" className={classes.form_heading}>
         Email:
       </label>
       <input
@@ -78,18 +112,18 @@ export default function Login({ state, handlePatient, handleDoctor }) {
         name="email"
         required
         className={classes.label}
-        onBlur={() => {
-          handleBlur("email");
-        }}
+        // onBlur={() => {
+        //   handleBlur("email");
+        // }}
         value={formData.email}
         onChange={(event) => {
-          handleChange("email", event);
+          formDataChangeHandler("email", event);
         }}
       ></input>
-      {formData.email.length >= 0 && emailisCorrect && (
+      {inputDataError.email && (
         <p className={classes.correct}>Please Enter a valid email</p>
       )}
-      <label for="password" className={classes.form_heading}>
+      <label htmlFor="password" className={classes.form_heading}>
         Password:
       </label>
       <input
@@ -98,98 +132,57 @@ export default function Login({ state, handlePatient, handleDoctor }) {
         name="password"
         required
         className={classes.label}
-        onBlur={() => {
-          handleBlur("password");
-        }}
+        // onBlur={() => {
+        //   handleBlur("password");
+        // }}
         value={formData.password}
         onChange={(event) => {
-          handleChange("password", event);
+          formDataChangeHandler("password", event);
         }}
       ></input>
-      {!passisCorrect && (
+      {inputDataError.password && (
         <p className={classes.correct}>
-          Password must be 8 or more characters long and must not contain
-          the word password!
+          Password must be 8 or more characters long and must not contain the
+          word password!
         </p>
       )}
-      {sign && (
-        <>
-          <label for="password" className={classes.form_heading}>
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="confirmpassword"
-            name="confirmpassword"
-            required
-            className={classes.label}
-            onBlur={() => {
-              handleBlur("confirmpassword");
-            }}
-            value={formData.confirmpassword}
-            onChange={(event) => {
-              handleChange("confirmpassword", event);
-            }}
-          ></input>
-        </>
-      )}
-      {confirmPassisCorrect && (
-        <p className={classes.correct}>Password should match</p>
-      )}
-      {!sign && (
-        <button className={classes.login} type="submit">
-          Login
-        </button>
-      )}
-      {sign && (
-        <button className={classes.login} type="submit">
-          Sign in
-        </button>
-      )}
-      {!sign && (
-        <button className={classes.last} onClick={handleSignInClicked}>
-          Dont have an account? Sign up
-        </button>
-      )}
-    </>
-  );
-  let data = (
-    <>
-      <p
-        className={classes.heading_primary}
-        id={state == "PATIENT" && classes.heading_primary}
-      >
-        {!sign ? "Welcome back!" : "Sign up today!"}
-      </p>
-      <p className={classes.paragraph}>
-        {!sign == true ? "Log" : "Sign"} in to your account and we'll get you in
-        to see our {state == "PATIENT" ? "Doctors!" : "Patient!"}
-      </p>
+
+      <button className={classes.login} type="submit">
+        Login
+      </button>
+      <Link to="/signup" className={classes.last}>
+        Dont have an account? Sign up!
+      </Link>
     </>
   );
 
   return (
     <>
       <div className={classes.container}>
-        <div class={classes.button_container}>
+        <div className={classes.button_container}>
           <button
             className={classes.customer_button}
-            id={state == "PATIENT" && classes.btnactive}
-            onClick={handleP}
+            id={state === "PATIENT" ? classes.btnactive : undefined}
+            onClick={() => {
+              changeFormData((prev) => ({ ...prev, userType: "PATIENT" }));
+              handlePatient();
+            }}
           >
             Patient
           </button>
           <button
             className={classes.doctor_button}
-            id={state == "DOCTOR" && classes.btnactive}
-            onClick={handleD}
+            id={state === "DOCTOR" ? classes.btnactive : undefined}
+            onClick={() => {
+              changeFormData((prev) => ({ ...prev, userType: "DOCTOR" }));
+              handleDoctor();
+            }}
           >
             Doctor
           </button>
         </div>
-        {data}
-        <div class={classes.login_form_container}>
-          <form class={classes.login_form} onSubmit={onSubmit}>
+        <div className={classes.login_form_container}>
+          <form className={classes.login_form} onSubmit={onSubmitHandler}>
             {content}
           </form>
         </div>

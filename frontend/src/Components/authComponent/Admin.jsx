@@ -2,7 +2,7 @@ import classes from "./Admin.module.css";
 export default function Admin() {
   let content = (
     <>
-      <label for="username" className={classes.form_heading}>
+      <label htmlFor="username" className={classes.form_heading}>
         Username:
       </label>
       <input
@@ -12,7 +12,7 @@ export default function Admin() {
         required
         className={classes.label}
       ></input>
-      <label for="password" className={classes.form_heading}>
+      <label htmlFor="password" className={classes.form_heading}>
         Password:
       </label>
       <input
@@ -29,7 +29,7 @@ export default function Admin() {
   );
   return (
     <>
-      <form class={classes.login_form}>{content}</form>
+      <form className={classes.login_form}>{content}</form>
     </>
   );
 }

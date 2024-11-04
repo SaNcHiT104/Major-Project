@@ -52,7 +52,7 @@ authRouter.post("/signup", async (req, res) => {
 authRouter.post("/login", async (req, res) => {
   try {
     const { userEmail, password, userType } = req.body;
-    // console.log(req.body);
+    console.log(req.body);
     let user;
     // handle the type of user on login accordingly
     if (userType === "ADMIN") {

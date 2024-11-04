@@ -1,9 +1,8 @@
 import WelcomePage from "./Components/authComponent/WelcomePage.jsx";
-import PatientProfile from "./Components/Patient/PatientProfile.jsx";
+import LandingPage from './Components/landingPage/LandingPage.jsx'
+import Header from './Components/WelcomePage/Header.jsx'
 export default function App() {
   return (
-    <>
-      <>{<WelcomePage />}</>
-    </>
+    <Header/>
   );
 }

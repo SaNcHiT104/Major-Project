@@ -75,7 +75,7 @@ export default function SecondComponent() {
             }
           />
         </div>
-        <img src={img} className={classes.right}></img>
+        <img src={img} alt="photo" className={classes.right}></img>
       </div>
     );
   }

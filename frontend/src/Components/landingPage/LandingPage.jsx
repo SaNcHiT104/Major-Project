@@ -19,12 +19,12 @@ export default function LandingPage() {
               practical tips, and personalized insights on our health website.
               Your well-being journey starts here. Embrace a vibrant life today!
             </div>
-            <div className={classes.down}>
-              <Link to="/signUp">
+            { <div className={classes.down}>
+              <Link to="/login">
                 <button className={classes.button}>Get started</button>
               </Link>
               <img src={img} alt="" className={classes.img} />
-            </div>
+            </div> }
           </div>
           <img src={rightImg} alt="" className={classes.right} />
         </div>

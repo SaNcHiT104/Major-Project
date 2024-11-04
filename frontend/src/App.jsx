@@ -1,14 +1,15 @@
-import PatientProfile from "./components/Patient/PatientProfile/PatientProfile";
-import WelcomePage from "./components/authComponent/WelcomePage";
-import LandingPage from "./components/landingPage/LandingPage";
+import PatientProfile from "./Components/Patient/PatientProfile/PatientProfile.jsx";
+import WelcomePage from "./Components/authComponent/WelcomePage.jsx";
+import LandingPage from "./Components/landingPage/LandingPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import DoctorProfile from "./components/Doctor/DoctorProfile/DoctorProfile";
+import DoctorProfile from "./Components/Doctor/DoctorProfile/DoctorProfile.jsx";
 // import NavBar from "./UI/NavBar";
-import Header from "./components/HomePage/Header";
+import Header from "./Components/HomePage/Header.jsx";
 import "./index.css";
-import Appointment from "./components/Appointments/Appointment";
-import DoctorProfilePatient from "./components/Doctor/DoctorProfilePatient/DoctorProfilePatient";
-import PatientRoot from "./components/Patient/PatientRoute/PatientRoot";
+import Appointment from "./Components/Appointments/Appointment.jsx";
+import DoctorProfilePatient from "./Components/Doctor/DoctorProfilePatient/DoctorProfilePatient.jsx";
+import PatientRoot from "./Components/Patient/PatientRoute/PatientRoot.jsx";
+import SignUp from "./Components/authComponent/Signup.jsx";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -19,7 +20,11 @@ export default function App() {
           element: <LandingPage />,
         },
         {
-          path: "signUp",
+          path: "signup",
+          element: <SignUp />,
+        },
+        {
+          path: "login",
           element: <WelcomePage />,
         },
         {
@@ -36,7 +41,29 @@ export default function App() {
             },
             {
               path: "findADoctor",
+              element: <DoctorProfilePatient />,
+            },
+            {
+              path: "education",
               element: <LandingPage />,
+            },
+          ],
+        },
+        {
+          path: "doctor/me",
+          element: <WelcomePage />,
+          children: [
+            {
+              path: "home",
+              element: <Header />,
+            },
+            {
+              path: "profile",
+              element: <DoctorProfile />,
+            },
+            {
+              path: "appointment",
+              element: <Appointment />,
             },
             {
               path: "education",
