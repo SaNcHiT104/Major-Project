@@ -3,12 +3,8 @@ import { useState } from "react";
 import image from "./../../../assets/patient.webp";
 import maleImage from "./../../../assets/maleProfile.avif";
 import femaleImage from "./../../../assets/femaleProfile.jpg";
-<<<<<<< HEAD
 import Footer from "../../../UI/Footer.jsx";
 import NavBar from "../../../UI/NavBar.jsx";
-=======
-
->>>>>>> c48205a858c305a1ae666a8e1ff984bc7fa1e57f
 // import DoctorProfileAppointment from "./DoctorProfileAppointment";
 
 export default function PatientProfile() {

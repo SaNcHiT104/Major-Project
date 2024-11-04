@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import classes from "./Login.module.css";
 import styles from "./WelcomePage.module.css";
@@ -28,8 +28,7 @@ const SignUp = () => {
     userType: false,
   });
 
-  function onSubmitHandler(event) {
-    // implement fetch query for backend!
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     let errorDetected = false;
     // validate the form data
@@ -68,12 +67,33 @@ const SignUp = () => {
     if (errorDetected) {
       return;
     }
+    // implement fetch query for backend!
+    const response = await fetch("http://localhost:3000/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        userEmail: formData.email,
+        userType: formData.userType,
+        password: formData.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // if there are validation errors or invalid credentials!
+    if (response.status === 401) {
+      // we can return the response like this as react-router will automatically extract the data for us.
+      return response;
+    }
 
-    console.log("SIGN UP SUCCESSFUL!");
-    users.push(formData);
-    console.log(formData);
-    navigate("/login");
-  }
+    if (!response.ok) {
+      throw json({ message: "Could not signup user." }, { status: 500 });
+    }
+    const resData = await response.json();
+    // console.log("FORM DATA - " + formData.email);
+    console.log("SIGNUP SUCCESSFUL!");
+    console.log(resData);
+    navigate("/patient/me/home");
+  };
 
   function formDataChangeHandler(identifier, event) {
     changeFormData((prev) => ({
@@ -141,7 +161,7 @@ const SignUp = () => {
       <label className={classes.form_heading}>User Type</label>
       <br />
       <RadioGroup
-        className={classes.radio}
+        className={classes.label}
         options={options}
         value={formData.userType}
         setValue={(event) => {
@@ -163,7 +183,7 @@ const SignUp = () => {
         <div className={styles.container}>
           <div className={styles.left}>
             <div className={styles.heading}>
-              <div className={styles.heading_primary}>
+              <div className={classes.heading_primary}>
                 <p>Welcome!</p>
               </div>
               <div className={styles.heading_secondary}>
@@ -175,14 +195,11 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-
           <div className={styles.right}>
-            {/* <p className={classes.paragraph}>Sign up to see our doctors !</p> */}
-            <div className={classes.login_form_container}>
-              <form className={classes.login_form} onSubmit={onSubmitHandler}>
-                {content}
-              </form>
-            </div>
+            Sign up and we'll get you in to see our Doctors!
+            <form className={classes.login_form} onSubmit={onSubmitHandler}>
+              {content}
+            </form>
             <Link to="/login" className={classes.last}>
               Already have an account? Log In!
             </Link>
