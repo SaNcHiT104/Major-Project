@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./WelcomePage.module.css";
 import LogIn from "./LogIn";
 import Admin from "./Admin";
-
+import logo from "../../assets/logo.jpg";
 function WelcomePage() {
   const [state, changeState] = useState("PATIENT");
   function handlePatient() {
@@ -86,6 +86,7 @@ function WelcomePage() {
                 Admin
               </button>
             </div>
+            {/* <img src={logo} className={classes.logo} alt="" /> */}
           </div>
         </div>
         <div className={classes.right}>{data}</div>

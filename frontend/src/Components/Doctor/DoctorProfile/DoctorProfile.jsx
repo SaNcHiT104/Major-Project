@@ -66,7 +66,6 @@ export default function PatientProfile() {
   const submitcheck =
     formData.email.includes("@") &&
     formData.officeContactInfo.length === 10 &&
-    !formData.officeContactInfo.charAt(0) === "0" &&
     formData.age >= 0 &&
     formData.address.length >= 0 &&
     (formData.gender.toLowerCase() === "male" ||

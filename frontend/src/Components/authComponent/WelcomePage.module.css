@@ -65,6 +65,7 @@
   letter-spacing: 1px;
   animation: moveInRight 0.7s ease;
 }
+
 .button_container {
   /* position: fixed; */
   margin-top: 4rem;
@@ -96,5 +97,5 @@
   color: var(--color_btnactive_text);
 }
 .right {
-  width: 49rem;
+  width: 40rem;
 }

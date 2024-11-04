@@ -79,7 +79,7 @@ export default function SecondComponent() {
       </div>
     );
   }
-  console.log(component);
+  // console.log(component);
   return (
     <>
       <div className={classes.container}>

@@ -161,7 +161,7 @@ const SignUp = () => {
       <label className={classes.form_heading}>User Type</label>
       <br />
       <RadioGroup
-        className={classes.label}
+        className={classes.radio}
         options={options}
         value={formData.userType}
         setValue={(event) => {
@@ -183,7 +183,7 @@ const SignUp = () => {
         <div className={styles.container}>
           <div className={styles.left}>
             <div className={styles.heading}>
-              <div className={classes.heading_primary}>
+              <div className={styles.heading_primary}>
                 <p>Welcome!</p>
               </div>
               <div className={styles.heading_secondary}>
@@ -195,11 +195,14 @@ const SignUp = () => {
               </div>
             </div>
           </div>
+
           <div className={styles.right}>
-            Sign up and we'll get you in to see our Doctors!
-            <form className={classes.login_form} onSubmit={onSubmitHandler}>
-              {content}
-            </form>
+            {/* <p className={classes.paragraph}>Sign up to see our doctors !</p> */}
+            <div className={classes.login_form_container}>
+              <form className={classes.login_form} onSubmit={onSubmitHandler}>
+                {content}
+              </form>
+            </div>
             <Link to="/login" className={classes.last}>
               Already have an account? Log In!
             </Link>

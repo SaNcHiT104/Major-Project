@@ -13,6 +13,12 @@
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.logo {
+  height: 4rem;
+  width: 10rem;
+  margin-top: -0.7rem;
+  margin-left: 3rem;
+}
 .innerContainer {
   position: absolute;
   background-color: rgb(255, 255, 255);

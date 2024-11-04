@@ -10,6 +10,8 @@ import Appointment from "./Components/Appointments/Appointment.jsx";
 import DoctorProfilePatient from "./Components/Doctor/DoctorProfilePatient/DoctorProfilePatient.jsx";
 import PatientRoot from "./Components/Patient/PatientRoute/PatientRoot.jsx";
 import SignUp from "./Components/authComponent/Signup.jsx";
+import Education from "./Components/Education/Education.jsx";
+import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -43,15 +45,15 @@ export default function App() {
               path: "findADoctor",
               element: <DoctorProfilePatient />,
             },
-            // {
-            //   path: "education",
-            //   element: <LandingPage />,
-            // },
+            {
+              path: "education",
+              element: <Education />,
+            },
           ],
         },
         {
           path: "doctor/me",
-          element: <WelcomePage />,
+          element: <DoctorRoot />,
           children: [
             {
               path: "home",
@@ -65,10 +67,10 @@ export default function App() {
               path: "appointment",
               element: <Appointment />,
             },
-            // {
-            //   path: "education",
-            //   element: <LandingPage />,
-            // },
+            {
+              path: "education",
+              element: <Education />,
+            },
           ],
         },
       ],

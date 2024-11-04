@@ -10,6 +10,7 @@
   background-color: rgb(253, 254, 255);
   border-bottom: 0.5px solid rgb(203, 198, 198, 0.6);
 }
+
 .innerContainer {
   width: 40rem;
   display: flex;

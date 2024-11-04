@@ -25,7 +25,7 @@ const adminSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
     validate(value) {
-      if (value.toLowerCase().includes("password"))
+      if (value.trim().toLowerCase().includes("password"))
         throw new Error(
           chalk.redBright.inverse("Password contains the word password!")
         );

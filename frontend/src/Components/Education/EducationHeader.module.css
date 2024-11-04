@@ -1,0 +1,46 @@
+@import url(../../index.css);
+.container {
+  height: 90vh;
+  width: 78.9%;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 238, 255, 0.3),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url(../../assets/educationHeader.jpg);
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  /* padding-right: 10rem; */
+  position: relative;
+  /* zoom: 0.5; */
+  margin-left: 20rem;
+}
+.heading_primary {
+  margin-top: 2.5rem;
+  font-size: 4.5rem;
+  /* letter-spacing: 0.3rem; */
+}
+.left {
+  position: absolute;
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  height: 70vh;
+  width: 48%;
+
+  /* background-color: blue; */
+  margin-left: -15rem;
+  margin-top: 6rem;
+}
+.leftdown {
+  margin-top: 4rem;
+  font-size: 1.2rem;
+}
+/* .right {
+  border-radius: 1rem;
+  position: absolute;
+  height: 70vh;
+  width: 44%;
+  margin-left: 52rem;
+  background-color: red;
+  margin-top: 6rem;
+} */
