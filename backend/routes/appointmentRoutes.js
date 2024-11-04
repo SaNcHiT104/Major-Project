@@ -1,6 +1,6 @@
 import express from "express";
-import Appointment from "../database/AppointmentModel/Appointment.js";
 import checkAuthMiddleware from "../middlewares/auth.js";
+import Appointment from '../database/AppointmentModel/PatientAppointments.js'
 
 const appointmentRouter = new express.Router();
 
@@ -43,7 +43,14 @@ appointmentRouter.get(
       const ownerId = req.user._id;
       // fetch all appointments of this user with this ownerId
       // as this user exists, checked in middleware, this request will not fail, it can though return null
-      const appointments = await Appointment.find({ owner: ownerId });
+      // populate() - Replace the 'doctor' with doctor profile so that patient can see doctor's info,
+      // do the above for all appointments
+      const appointments = await Appointment.find({ owner: ownerId }).lean();
+      // console.log(appointments);
+      for (let i = 0; i < appointments.length; i++) {
+        // console.log(typeof(appointments[i]));
+        await Appointment.populate(appointments[i], {path: 'doctor'});
+      }
       return res.status(200).json({
         message: `Appointments found: ${appointments.length}`,
         appointments,
@@ -64,7 +71,12 @@ appointmentRouter.get(
       const doctorId = req.user._id;
       // fetch all appointments of this user with this doctorId
       // as this user exists, checked in middleware, this request will not fail, it can though return null
-      const appointments = await Appointment.find({ doctorId: doctorId });
+      // populate() - Replaces the 'owner' with patient profile so that doctor can see patient's info
+      const appointments = await Appointment.find({ doctor: doctorId });
+      for (let i = 0; i < appointments.length; i++) {
+        // console.log(typeof(appointments[i]));
+        await Appointment.populate(appointments[i], {path: 'owner'});
+      }
       return res.status(200).json({
         message: `Appointments found: ${appointments.length}`,
         appointments,
@@ -85,7 +97,7 @@ appointmentRouter.patch(
       // the req body will also have the appointment id
       const doctorId = req.user._id;
       const updatedAppointment = await Appointment.findOneAndUpdate(
-        { _id: req.body.aptId, doctorId: doctorId },
+        { _id: req.body.aptId, doctor: doctorId },
         req.body,
         {
           new: true,

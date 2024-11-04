@@ -77,7 +77,7 @@ patientSchema.methods.generateAuthToken = async function () {
 
 // check user credentials using compare method of bcrypt
 patientSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
+  const user = await Patient.findOne({ email });
 
   if (!user) {
     return null;
@@ -89,5 +89,5 @@ patientSchema.statics.findByCredentials = async (email, password) => {
   return user;
 };
 
-const User = mongoose.model("Patient", patientSchema);
-export default User;
+const Patient = mongoose.model("Patient", patientSchema);
+export default Patient;

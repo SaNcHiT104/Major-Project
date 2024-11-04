@@ -46,6 +46,8 @@ const doctorSchema = new mongoose.Schema({
     },
     default: {},
   },
+  totalRating: { type: Number, default: 0 }, // will be float fixed to 2 decimal places
+  ratingCount: { type: Number, default: 0 }, // will be int
 });
 
 // method to send the data we want to send, removing password and tokens from the object
@@ -73,7 +75,7 @@ doctorSchema.methods.generateAuthToken = async function () {
 
 // check user credentials using compare method of bcrypt
 doctorSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
+  const user = await Doctor.findOne({ email });
   // console.log("FROM FN: " + user);
 
   if (!user) {
@@ -94,5 +96,5 @@ doctorSchema.pre("save", async function (next) {
   }
   next();
 });
-const User = mongoose.model("Doctor", doctorSchema);
-export default User;
+const Doctor = mongoose.model("Doctor", doctorSchema);
+export default Doctor;
