@@ -3,13 +3,39 @@ import { useState } from "react";
 import image from "../../../assets/patient.webp";
 import maleImage from "../../../assets/maleProfile.avif";
 import femaleImage from "../../../assets/femaleProfile.jpg";
-
+import { patientids } from "../../../util/data";
 export default function PatientProfile() {
+  // let patientids = [];
   const [isEdit, changeIsEdit] = useState(true);
   function handleEdit() {
     if (!submitcheck) {
       alert("Please enter correct details");
     } else {
+      if (isEdit && submitcheck) {
+        const isPresent = patientids.findIndex(
+          (obj) => obj.email === formData.email
+        );
+        if (isPresent !== -1) {
+          patientids[isPresent] = {
+            email: formData.email,
+            name: formData.name,
+            gender: formData.gender,
+            age: formData.age,
+            contactInfo: formData.contact,
+            address: formData.address,
+          };
+        } else {
+          patientids.push({
+            email: formData.email,
+            name: formData.name,
+            gender: formData.gender,
+            age: formData.age,
+            contactInfo: formData.contact,
+            address: formData.address,
+          });
+        }
+        console.log(patientids);
+      }
       changeIsEdit(!isEdit);
     }
   }

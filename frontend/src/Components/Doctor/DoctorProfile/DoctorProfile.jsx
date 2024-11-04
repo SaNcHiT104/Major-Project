@@ -3,9 +3,7 @@ import { useState } from "react";
 import image from "./../../../assets/patient.webp";
 import maleImage from "./../../../assets/maleProfile.avif";
 import femaleImage from "./../../../assets/femaleProfile.jpg";
-import Footer from "../../../UI/Footer.jsx";
-import NavBar from "../../../UI/NavBar.jsx";
-// import DoctorProfileAppointment from "./DoctorProfileAppointment";
+import { doctorids } from "../../../util/data";
 
 export default function PatientProfile() {
   const [isEdit, changeIsEdit] = useState(true);
@@ -13,6 +11,33 @@ export default function PatientProfile() {
     if (!submitcheck) {
       alert("Please enter correct details");
     } else {
+      if (isEdit && submitcheck) {
+        const isPresent = doctorids.findIndex(
+          (obj) => obj.email === formData.email
+        );
+        if (isPresent !== -1) {
+          doctorids[isPresent] = {
+            email: formData.email,
+            name: formData.name,
+            gender: formData.gender,
+            age: formData.age,
+            officeContactInfo: formData.officeContactInfo,
+            officeContactInfo: formData.officeAddress,
+            specialty: formData.specialty,
+          };
+        } else {
+          doctorids.push({
+            email: formData.email,
+            name: formData.name,
+            gender: formData.gender,
+            age: formData.age,
+            officeContactInfo: formData.officeContactInfo,
+            officeContactInfo: formData.officeAddress,
+            specialty: formData.specialty,
+          });
+        }
+        console.log(doctorids);
+      }
       changeIsEdit(!isEdit);
     }
   }
@@ -67,7 +92,7 @@ export default function PatientProfile() {
     formData.email.includes("@") &&
     formData.officeContactInfo.length === 10 &&
     formData.age >= 0 &&
-    formData.address.length >= 0 &&
+    formData.officeAddress.length >= 0 &&
     (formData.gender.toLowerCase() === "male" ||
       formData.gender.toLowerCase() === "female") &&
     formData.specialty.length > 0;
