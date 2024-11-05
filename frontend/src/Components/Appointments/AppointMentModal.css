@@ -14,6 +14,7 @@
 .modal-overlay.open {
   display: flex;
 }
+
 .modal {
   background-color: white;
   border-radius: 5px;

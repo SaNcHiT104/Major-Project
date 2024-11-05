@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingIndicator from "../../UI/LoadingIndicator.jsx";
 import ErrorBlock from "../../UI/ErrorBlock.jsx";
 import AppointmentModal from "./AppointmentModal.jsx";
-import { AnimatePresence } from "framer-motion";
 export default function Appointment() {
   const [upcoming, changeUpcoming] = useState(true);
   const {
@@ -89,33 +88,30 @@ export default function Appointment() {
   mainData = (
     <div>
       <div className={classes.container}>
-        <AnimatePresence>
-          {!openModal && (
-            <div>
-              <AppointMentHeader
-                upcomingAppointmentHandler={upcomingAppointmentHandler}
-                pastAppointmentHandler={pastAppointmentHandler}
-                upcoming={upcoming}
-              />
-              {upcoming && isDataPresent && (
-                <p className={classes.appoint}>No upcoming appointments</p>
-              )}
-              {!upcoming && isDataPresent && (
-                <p className={classes.appoint}>No past appointments</p>
-              )}
-              {data}
-            </div>
-          )}
-
-          {openModal && singleObj && (
-            <AppointmentModal
-              obj={singleObj}
-              onClose={() => {
-                changeModal(false);
-              }}
+        {!openModal && (
+          <div>
+            <AppointMentHeader
+              upcomingAppointmentHandler={upcomingAppointmentHandler}
+              pastAppointmentHandler={pastAppointmentHandler}
+              upcoming={upcoming}
             />
-          )}
-        </AnimatePresence>
+            {upcoming && isDataPresent && (
+              <p className={classes.appoint}>No upcoming appointments</p>
+            )}
+            {!upcoming && isDataPresent && (
+              <p className={classes.appoint}>No past appointments</p>
+            )}
+            {data}
+          </div>
+        )}
+        {openModal && singleObj && (
+          <AppointmentModal
+            obj={singleObj}
+            onClose={() => {
+              changeModal(false);
+            }}
+          />
+        )}
       </div>
     </div>
   );

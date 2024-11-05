@@ -41,6 +41,7 @@ export const patientpro = {
   height: `5'9"`,
   weight: "80",
   bmi: "26.7",
+  bloodGroup: "O+",
   prescriptions: [
     {
       _id: "123",
@@ -70,3 +71,43 @@ export const patientpro = {
     },
   ],
 };
+
+export const doctorprofile = [
+  {
+    id:"1",
+    name: "Sahil Agarwal",
+    post: "Chairman",
+    location: "Gurgram",
+    field:"Neuroscience",
+    expertise: ["ENT","HEART","CHILD","LIVER"],
+    qualification: ["MBBS","MBBS","MBBS","MBBS"],
+  },
+  {
+    id:"2",
+    name: "Manpreet Singh",
+    post: "Head Surgeon",
+    location: "Rajasthan",
+    field:"Neuroscience",
+    expertise: ["ENT","HEART","CHILD","LIVER"],
+    qualification: ["MBBS","MBBS","MBBS","MBBS"],
+  },
+  {
+    id:"3",
+    name: "Riya Sharma",
+    post: "Dentist",
+    location: "Patna",
+    field:"Neuroscience",
+    expertise: ["ENT","HEART","CHILD","LIVER"],
+    qualification: ["MBBS","MBBS","MBBS","MBBS"],
+  }
+];
+
+export const singledoctor= {
+  id:"1",
+  name: "Sahil Agarwal",
+  post: "Chairman",
+  location: "Gurgram",
+  field:"Neuroscience",
+  expertise: ["ENT","HEART","CHILD","LIVER"],
+  qualification: ["MBBS","MBBS","MBBS","MBBS"],
+}

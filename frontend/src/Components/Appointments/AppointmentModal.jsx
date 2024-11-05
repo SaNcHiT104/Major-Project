@@ -1,7 +1,6 @@
 // Modal.js
 import React, { useState } from "react";
 import "./AppointMentModal.css";
-import { motion } from "framer-motion";
 import img from "./../../assets/maleProfile.avif";
 import AppointmentModalForm from "./AppointmentModalForm";
 import { useMutation } from "@tanstack/react-query";
@@ -65,10 +64,7 @@ function Modal({ onClose, obj }) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 30 }}
+    <div
       className={`modal-overlay ${isOpen ? "open" : ""}`}
       onClick={handleOverlayClick}
     >
@@ -107,7 +103,7 @@ function Modal({ onClose, obj }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

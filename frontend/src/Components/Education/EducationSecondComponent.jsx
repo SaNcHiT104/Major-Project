@@ -2,22 +2,10 @@ import React from "react";
 import classes from "./EducationSecondComponent.module.css";
 import EducationSecondComponentCard from "./EducationSecondComponentCard";
 import img from "../../assets/EducationSecondComponent.jpg";
-import { motion, useScroll, useTransform } from "framer-motion";
 export default function EducationSecondComponent() {
-  const { scrollY } = useScroll();
-  const opacityX = useTransform(
-    scrollY,
-    [300, 400, 500, 550, 650, 700],
-    [0.4, 0.7, 0.8, 0.85, 0.9, 1]
-  );
   return (
     <div className={classes.secondContainer}>
-      <motion.div
-        className={classes.left}
-        style={{
-          opacity: opacityX,
-        }}
-      >
+      <div className={classes.left}>
         <EducationSecondComponentCard
           heading={"welcome"}
           paragraph={
@@ -46,7 +34,7 @@ export default function EducationSecondComponent() {
           }
           src="sexual_anatomy"
         />
-      </motion.div>
+      </div>
       <img
         src={img}
         alt="image_of_book_library"

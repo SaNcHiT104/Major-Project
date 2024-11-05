@@ -1,4 +1,3 @@
-import { queryClient } from "./http";
 export async function fetchDoctorProfile() {
   const response = await fetch("http://localhost:3000/doctor/me/profile", {
     method: "GET",

@@ -4,7 +4,12 @@ import { useState } from "react";
 import SpecialisationList from "./SpecialisationList";
 import QualificationList from "./QualificationList";
 import { Link } from "react-router-dom";
+import { doctorprofile } from "../../../util/data";
+import { singledoctor } from "../../../util/data";
+
+
 export default function DoctorCard(props) {
+  
   const [expertise, setExpertise] = useState(true);
   const [quali, setQualification] = useState(false);
   function handleExpertise() {
@@ -15,6 +20,8 @@ export default function DoctorCard(props) {
     setQualification(true);
     setExpertise(false);
   }
+  
+  console.log(props);
   return (
     <div>
       <div className={classes.doctorlist_cards}>
@@ -26,6 +33,7 @@ export default function DoctorCard(props) {
             <div className={classes.doctorlist_right}>
               <div className={classes["content-top"]}>
                 <div className={classes.name}>{props.name}</div>
+        
                 <div className={classes.post}>{props.post}</div>
               </div>
               <hr />
@@ -33,7 +41,15 @@ export default function DoctorCard(props) {
                 <div className={classes.row1}>
                   <div className={classes.field}>{props.field}</div>
                   <div className={classes}>
-                    <Link to="doctorprofile">Visit the Profile</Link>
+                    
+                    
+                    {/* <Link
+                      to={`/doctor/${userId}/home`}
+                      className={({ isActive }) =>
+                        isActive ? classes.active : undefined
+                      }
+                    >
+                    </Link> */}
                   </div>
                 </div>
                 <div className={classes.row2}>
@@ -56,12 +72,12 @@ export default function DoctorCard(props) {
               </div>
             </div>
             <div className={classes["bottom-content"]}>
-              {expertise && <SpecialisationList />}
-              {quali && <QualificationList />}
+              {expertise && <SpecialisationList sl={props.sl}/>}
+              {quali && <QualificationList ql={props.ql}/>}
             </div>
           </div>
           <div>
-            <button className={classes.Button}>Meet The Doctor</button>
+            <button className={classes.Button}><Link to={`doctorprofile/${props.id}`}>Meet The Doctor</Link></button>
           </div>
         </div>
       </div>

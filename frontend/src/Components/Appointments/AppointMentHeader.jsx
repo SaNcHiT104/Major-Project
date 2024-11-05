@@ -1,5 +1,5 @@
 import classes from "./AppointMentHeader.module.css";
-import { motion } from "framer-motion";
+import { useState } from "react";
 export default function AppointMentHeader({
   upcomingAppointmentHandler,
   pastAppointmentHandler,
@@ -7,50 +7,31 @@ export default function AppointMentHeader({
 }) {
   return (
     <>
-      <motion.p
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.1 }}
-        className={classes.heading}
-      >
-        Appointments
-      </motion.p>
-      <motion.div
-        className={classes.btnContainer}
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.1 }}
-      >
-        <motion.button
-          whileHover={{ scale: 1.1 }}
+      <p className={classes.heading}>Appointments</p>
+      <div className={classes.btnContainer}>
+        <button
           className={classes.btn}
           id={upcoming && classes.active}
           onClick={upcomingAppointmentHandler}
         >
           Upcoming
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
+        </button>
+        <button
           className={classes.btn}
           id={!upcoming && classes.active}
           onClick={pastAppointmentHandler}
         >
           Past
-        </motion.button>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.1 }}
-        className={classes.mainHeading}
-      >
+        </button>
+      </div>
+      <div className={classes.mainHeading}>
         <p className={classes.headingContent}>Name</p>
         <p className={classes.headingContent}>Email</p>
         <p className={classes.headingContent}>Contact</p>
         <p className={classes.headingContent}>Description</p>
         <p className={classes.headingContent}>Date</p>
         {/* <p className={classes.headingContennt}>Status</p> */}
-      </motion.div>
+      </div>
     </>
   );
 }

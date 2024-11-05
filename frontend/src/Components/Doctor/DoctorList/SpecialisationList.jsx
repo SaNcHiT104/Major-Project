@@ -1,13 +1,16 @@
 import React from 'react'
 
-export default function SpecialisationList() {
+export default function SpecialisationList(props) {
   return (
     <div className="specilisationlist">
         <ul>
-            <li>Organ Specific Treatment</li>
-            <li>Organ Specific Treatment</li>
-            <li>Organ Specific Treatment</li>
-            <li>Organ Specific Treatment</li>
+        {
+            props.sl?.map((data,idx)=>{
+              return (
+                <li id={idx}>{data}</li>
+              )
+            })
+          }
         </ul>
     </div>
   )
