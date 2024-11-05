@@ -18,8 +18,15 @@ import SexualAnatomy from "./Components/Education/SexualAnatomy.js";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./util/http.js";
+import AuthRoute, {
+  redirectToHome,
+} from "./Components/authComponent/AuthRoute.js";
+
+// import { queryClient } from "./util/appointment.js";
 export default function App() {
+  const isAuthenticated = localStorage.getItem("token") !== null;
+  console.log(isAuthenticated)
+  // const redirectToHome = useRedirectToLogin();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -30,15 +37,19 @@ export default function App() {
         },
         {
           path: "signup",
-          element: <SignUp />,
+          element: isAuthenticated ? redirectToHome() : <SignUp />,
         },
         {
           path: "login",
-          element: <WelcomePage />,
+          element: isAuthenticated ? redirectToHome() : <WelcomePage />,
         },
         {
           path: "patient/:id",
-          element: <PatientRoot />,
+          element: (
+            <AuthRoute>
+              <PatientRoot />
+            </AuthRoute>
+          ),
           children: [
             {
               path: "home",
@@ -50,17 +61,17 @@ export default function App() {
             },
             {
               path: "findADoctor",
-              
-              children:[
+
+              children: [
                 {
-                  path:"doctorprofile",
-                  element:<DoctorProfilePatient/>
+                  path: "doctorprofile",
+                  element: <DoctorProfilePatient />,
                 },
                 {
-                  index:true,
+                  index: true,
                   element: <DoctorList />,
-                }
-              ]
+                },
+              ],
             },
             {
               path: "education",
@@ -91,7 +102,11 @@ export default function App() {
         },
         {
           path: "doctor/:id",
-          element: <DoctorRoot />,
+          element: (
+            <AuthRoute>
+              <DoctorRoot />
+            </AuthRoute>
+          ),
           children: [
             {
               path: "home",
@@ -136,6 +151,7 @@ export default function App() {
     },
   ]);
 
+  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

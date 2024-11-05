@@ -2,6 +2,8 @@ import classes from "./templatePage.module.css";
 import { Link } from "react-router-dom";
 
 const SexualAnatomy = () => {
+  const userId = localStorage.getItem("userId");
+  const userType = localStorage.getItem("userType").toLowerCase();
   return (
     <>
       <div className={classes.container}>
@@ -1618,17 +1620,17 @@ const SexualAnatomy = () => {
             </p>
             <ul className={classes.education_links}>
               <li>
-                <Link to="/education/pregnancy_panic">
+                <Link to={`/${userType}/${userId}/education/pregnancy_panic`}>
                   The Pregnancy Panic Companion
                 </Link>
               </li>
               <li>
-                <Link to="/education/sexuality_wtf_is_it_anyway">
+                <Link to={`/${userType}/${userId}/education/sexuality_wtf_is_it_anyway`}>
                   Sexuality: WTF is it, anyway?
                 </Link>
               </li>
               <li>
-                <Link to="/education/navigating_consent">
+                <Link to={`/${userType}/${userId}/education/navigating_consent`}>
                   Navigating Consent
                 </Link>
               </li>

@@ -2,6 +2,8 @@ import classes from "./templatePage.module.css";
 import { Link } from "react-router-dom";
 
 const SexualityWTF = () => {
+  const userId = localStorage.getItem("userId").toLowerCase();
+  const userType = localStorage.getItem("userType").toLowerCase();
   return (
     <>
       <div className={classes.container}>
@@ -939,15 +941,15 @@ There are all kinds of relationships: family relationships, friendships, romanti
           </p>
           <ul className={classes.education_links}>
             <li>
-              <Link to="/education/pregnancy_panic">
+              <Link to={`/${userType}/${userId}/education/pregnancy_panic`}>
                 The Pregnancy Panic Companion
               </Link>
             </li>
             <li>
-              <Link to="/education/navigating_consent">Navigating Consent</Link>
+              <Link to={`/${userType}/${userId}/education/navigating_consent`}>Navigating Consent</Link>
             </li>
             <li>
-              <Link to="/education/sexual_anatomy">
+              <Link to={`/${userType}/${userId}/education/sexual_anatomy`}>
                 Sexual Anatomy for every body
               </Link>
             </li>

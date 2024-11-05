@@ -21,7 +21,7 @@ export async function getDecodedTokenInfoFromToken(token) {
     // console.log("DATA - " + data.userType);
     return data;
   } catch (error) {
-    console.error("Error fetching user type:", error);
+    console.log("INVALID TOKEN", error);
   }
 }
 

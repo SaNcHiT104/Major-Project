@@ -17,12 +17,11 @@ const ProtectedRoute = ({ children, userType }) => {
   }, []); // Empty dependency array to fetch data only once
   // Pass required userType as a prop
   console.log(userType);
-  const userId = localStorage.getItem("userId");
-  if (!decodedToken) {
+  if (decodedToken === null) {
     return;
   }
-  console.log(decodedToken);
-
+  const userId = localStorage.getItem("userId");
+  // console.log(decodedToken);
   if (!userId || !decodedToken || decodedToken.userType !== userType || decodedToken.userId !== userId) {
     return <Navigate to="/login" replace />; // Redirect to login on invalid user
   }

@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 export const users = [
-    { id: 'e1', email: "sahil@gmail.com", password: "Sahil@jiit", userType: "DOCTOR" },
-  ];
+  {
+    id: "e1",
+    email: "sahil@gmail.com",
+    password: "Sahil@jiit",
+    userType: "DOCTOR",
+  },
+];
 
 export const isEmailCorrect = (email) => email.includes("@");
 

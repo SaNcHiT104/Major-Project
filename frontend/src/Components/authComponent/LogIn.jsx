@@ -6,7 +6,7 @@ import {
   isPasswordCorrect,
   isUserTypeCorrect,
 } from "./authHandler";
-import { getDecodedTokenInfoFromToken} from "../../util/http";
+import { getDecodedTokenInfoFromToken } from "../../util/http";
 
 export default function Login({ state, handlePatient, handleDoctor }) {
   const navigate = useNavigate();
