@@ -41,6 +41,7 @@ export const patientpro = {
   height: `5'9"`,
   weight: "80",
   bmi: "26.7",
+  bloodGroup: "O+",
   prescriptions: [
     {
       _id: "123",

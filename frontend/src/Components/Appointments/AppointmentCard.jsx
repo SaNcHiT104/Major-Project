@@ -1,10 +1,16 @@
+import { useNavigate, useParams } from "react-router-dom";
 import classes from "./AppointmentCard.module.css";
-import { upcomingAppointments, pastAppointments } from "../../util/data";
 export default function AppointmentCard({ obj, state, handleRemove }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
   // let state = true;
-  // console.log(obj);
+  console.log(obj);
   function handleCheckChange() {
     handleRemove();
+  }
+
+  function viewEHRHandler() {
+    navigate(`/doctor/${id}/viewEHR/${obj.owner._id}`);
   }
   const formattedDate = new Date(obj.date).toLocaleDateString("en-Us", {
     day: "numeric",
@@ -21,6 +27,13 @@ export default function AppointmentCard({ obj, state, handleRemove }) {
           <p className={classes.headingContent}>{obj.description}</p>
           <p className={classes.headingContent}>{formattedDate}</p>
         </div>
+        <div className={classes.checkBlock} onClick={viewEHRHandler}>
+          <button className={classes.button}>
+            <span className={classes.transition}></span>
+            <span className={classes.gradient}></span>
+            <span className={classes.label}>View EHR</span>
+          </button>
+        </div>
         {state && (
           <div className={classes.checkBlock} onClick={handleCheckChange}>
             <button className={classes.button}>
@@ -29,7 +42,6 @@ export default function AppointmentCard({ obj, state, handleRemove }) {
               <span className={classes.label}>Done!</span>
             </button>
           </div>
-          // <button onClick={handleCheckChange}>Click here</button>
         )}
       </div>
     </>

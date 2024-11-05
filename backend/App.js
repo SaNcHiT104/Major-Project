@@ -6,6 +6,7 @@ import patientRouter from "./routes/patientRoutes.js";
 import doctorRouter from "./routes/doctorRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import appointmentRouter from "./routes/appointmentRoutes.js";
+import ehrRouter from "./routes/ehrRoutes.js";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(patientRouter);
 app.use(doctorRouter);
 app.use(authRouter);
 app.use(appointmentRouter);
+app.use(ehrRouter);
 
 app.get("/", (req, res) => {
   return res.send("<h1>Welcome!</h1>");

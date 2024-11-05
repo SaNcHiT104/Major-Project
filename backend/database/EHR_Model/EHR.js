@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const EHRSchema = new mongoose.Schema({
-    // will populate the schema with useful information
+  // will populate the schema with useful information
   patientId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Patient",
@@ -10,15 +10,15 @@ const EHRSchema = new mongoose.Schema({
   bloodGroup: {
     type: String,
   },
-  lastRecordedBP: {
-    type: String
-  },
+  bmi: { type: String },
+  height: { type: String },
+  weight: { type: String },
   diagnosis: {
     type: [
       {
         date: {
           type: Date,
-          required: true,
+          // required: true,
         },
         diagnosis: {
           type: String,
@@ -34,7 +34,7 @@ const EHRSchema = new mongoose.Schema({
       {
         date: {
           type: Date,
-          required: true,
+          //required: true,
         },
         medication: {
           type: String,
