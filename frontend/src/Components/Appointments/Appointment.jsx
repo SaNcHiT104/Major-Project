@@ -2,11 +2,23 @@ import AppointMentHeader from "./AppointMentHeader.jsx";
 import classes from "./Appointment.module.css";
 import AppointmentCard from "./AppointmentCard.jsx";
 import { useState } from "react";
+import { fetchPatientUpcomingAppointments } from "../../util/appointment.js";
+import { useQuery } from "@tanstack/react-query";
 import { upcomingAppointments, pastAppointments } from "../../util/data.js";
 export default function Appointment() {
   const [upcoming, changeUpcoming] = useState(true);
   const [upcomingArray, changeUpcomingArray] = useState(upcomingAppointments);
   const [pastArray, changePastArray] = useState(pastAppointments);
+  const {
+    data: content,
+    isPending,
+    isError,
+    error,
+  } = useQuery({
+    queryFn: () => fetchPatientUpcomingAppointments(!upcoming),
+    queryKey: ["patient"],
+  });
+  console.log({ content });
   function handleRemove(id) {
     const pastfilteredArray = upcomingArray.find((obj) => obj.id == id);
     changePastArray((prev) => [...prev, pastfilteredArray]);
@@ -24,7 +36,7 @@ export default function Appointment() {
   let data;
 
   if (upcoming) {
-    data = upcomingArray.map((obj) => (
+    data = pastArray.map((obj) => (
       <AppointmentCard
         key={obj.id}
         obj={obj}
@@ -35,7 +47,7 @@ export default function Appointment() {
       />
     ));
   } else {
-    data = pastArray.map((obj) => (
+    data = upcomingArray.map((obj) => (
       <AppointmentCard key={obj.id} obj={obj} state={upcoming} />
     ));
   }

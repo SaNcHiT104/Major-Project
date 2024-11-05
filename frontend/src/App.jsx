@@ -12,6 +12,8 @@ import PatientRoot from "./Components/Patient/PatientRoute/PatientRoot.jsx";
 import SignUp from "./Components/authComponent/Signup.jsx";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { queryClient } from "./util/appointment.js";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -76,6 +78,11 @@ export default function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
   // return <DoctorProfilePatient />;
 }
