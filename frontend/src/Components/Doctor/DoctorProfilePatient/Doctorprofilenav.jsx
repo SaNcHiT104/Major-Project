@@ -1,11 +1,11 @@
 import React from 'react'
-import './Doctorprofilenav.css';
+import classes from './Doctorprofilenav.module.css';
 
 export default function Doctorprofilenav() {
     return (
-        <div className="DoctorProfile">
-            <div className="navbar">
-                <ul className="navlist">
+        <div className={classes.DoctorProfile}>
+            <div className={classes.navbar}>
+                <ul className={classes.navlist}>
                     <li>OverView</li>
                     <li>Specialisation and Expertise</li>
                     <li>Milestones</li>

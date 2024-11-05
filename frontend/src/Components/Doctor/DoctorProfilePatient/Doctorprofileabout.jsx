@@ -1,8 +1,8 @@
 import React from 'react'
-import './Doctorprofileabout.css';
+import classes from './Doctorprofileabout.module.css';
 export default function Doctorprofileabout() {
   return (
-    <div className="Doctorprofileabout">
+    <div className={classes.Doctorprofileabout}>
         <h2>About Dr.Naresh Tandon</h2>
         <span>
         The Chairman and Managing Director of Medanta The Medicity, 

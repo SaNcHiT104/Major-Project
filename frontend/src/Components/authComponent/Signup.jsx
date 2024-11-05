@@ -1,4 +1,4 @@
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import classes from "./Login.module.css";
 import styles from "./WelcomePage.module.css";
@@ -7,6 +7,7 @@ import {
   isEmailCorrect,
   isPasswordCorrect,
   isUserTypeCorrect,
+  users,
 } from "./authHandler";
 import RadioGroup from "./RadioGroup";
 
@@ -27,7 +28,8 @@ const SignUp = () => {
     userType: false,
   });
 
-  const onSubmitHandler = async (event) => {
+  function onSubmitHandler(event) {
+    // implement fetch query for backend!
     event.preventDefault();
     let errorDetected = false;
     // validate the form data
@@ -66,33 +68,12 @@ const SignUp = () => {
     if (errorDetected) {
       return;
     }
-    // implement fetch query for backend!
-    const response = await fetch("http://localhost:3000/signup", {
-      method: "POST",
-      body: JSON.stringify({
-        userEmail: formData.email,
-        userType: formData.userType,
-        password: formData.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    // if there are validation errors or invalid credentials!
-    if (response.status === 401) {
-      // we can return the response like this as react-router will automatically extract the data for us.
-      return response;
-    }
 
-    if (!response.ok) {
-      throw json({ message: "Could not signup user." }, { status: 500 });
-    }
-    const resData = await response.json();
-    // console.log("FORM DATA - " + formData.email);
-    console.log("SIGNUP SUCCESSFUL!");
-    console.log(resData);
-    navigate("/patient/me/home");
-  };
+    console.log("SIGN UP SUCCESSFUL!");
+    users.push(formData);
+    console.log(formData);
+    navigate("/login");
+  }
 
   function formDataChangeHandler(identifier, event) {
     changeFormData((prev) => ({

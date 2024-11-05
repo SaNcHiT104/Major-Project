@@ -56,7 +56,7 @@
 }
 .wrapper .box .info .stars
 {
-    color:#F04E30;
+    color:var()
 }
 .image img
 {
