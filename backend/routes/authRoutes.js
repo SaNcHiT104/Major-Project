@@ -3,7 +3,6 @@ import Patient from "../database/UserModels/Patient.js";
 import Doctor from "../database/UserModels/Doctor.js";
 import Admin from "../database/UserModels/Admin.js";
 import checkAuthMiddleware from "../middlewares/auth.js";
-import validator from "validator";
 
 const authRouter = new express.Router();
 
@@ -41,7 +40,7 @@ authRouter.post("/signup", async (req, res) => {
         .json({ message: "Signup successful", user, token });
     } catch (error) {
       console.log("Error!", error);
-      return res.status(401).json({ error: "Invalid User Type" });
+      return res.status(409).json({ error: "Error! A user with same email already exists!" });
     }
   } catch (error) {
     console.error("Error during signup:", error);

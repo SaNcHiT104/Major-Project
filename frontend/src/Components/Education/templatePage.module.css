@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+.container {
+  width: 100%;
+  height: 100%;
+  /* Add your background pattern here */
+  --sz: 15px;
+  --c0: #000000;
+  --c1: #2979ba;
+  --ts: 50% / calc(var(--sz) * 8) calc(var(--sz) * 16);
+  margin: 0;
+  padding: 1rem;
+  overflow: hidden;
+  --dot: var(--c1) 0 calc(var(--sz) * 0.78),
+    #fff0 calc(calc(var(--sz) * 0.78) + 1px) 100%;
+  --dot2: radial-gradient(circle at 90% 0%, var(--dot)) var(--ts),
+    radial-gradient(circle at 65% 0%, var(--dot)) var(--ts),
+    radial-gradient(circle at 40% 0%, var(--dot)) var(--ts),
+    radial-gradient(circle at 15% 0%, var(--dot)) var(--ts);
+  --cg1: conic-gradient(from -90deg at 5% 51%, var(--c0) 0 90deg, #fff0 0 100%)
+    var(--ts);
+  --cg2: conic-gradient(from -90deg at 25% 50%, var(--c1) 0 90deg, #fff0 0 100%)
+    var(--ts);
+  --cg3: conic-gradient(
+      from -90deg at 30% 38.5%,
+      var(--c0) 0 90deg,
+      #fff0 0 100%
+    )
+    var(--ts);
+  --cg4: conic-gradient(
+      from -90deg at 50% 37.5%,
+      var(--c1) 0 90deg,
+      #fff0 0 100%
+    )
+    var(--ts);
+  --cg5: conic-gradient(from -90deg at 55% 26%, var(--c0) 0 90deg, #fff0 0 100%)
+    var(--ts);
+  --cg6: conic-gradient(from -90deg at 75% 25%, var(--c1) 0 90deg, #fff0 0 100%)
+    var(--ts);
+  --cg7: conic-gradient(
+      from -90deg at 80% 13.5%,
+      var(--c0) 0 90deg,
+      #fff0 0 100%
+    )
+    var(--ts);
+  --cg8: conic-gradient(
+      from -90deg at 100% 12.5%,
+      var(--c1) 0 90deg,
+      #fff0 0 100%
+    )
+    var(--ts);
+
+  background: var(--dot2), var(--dot2),
+    radial-gradient(circle at 90% 100%, var(--dot)) var(--ts),
+    radial-gradient(circle at 65% 100%, var(--dot)) var(--ts),
+    radial-gradient(circle at 40% 100%, var(--dot)) var(--ts),
+    radial-gradient(circle at 15% 100%, var(--dot)) var(--ts),
+    radial-gradient(circle at 90% 12.5%, var(--dot)) var(--ts),
+    radial-gradient(circle at 65% 25%, var(--dot)) var(--ts),
+    radial-gradient(circle at 40% 37.5%, var(--dot)) var(--ts),
+    radial-gradient(circle at 15% 50%, var(--dot)) var(--ts), var(--cg1),
+    var(--cg1), var(--cg2), var(--cg2), var(--cg3), var(--cg3), var(--cg4),
+    var(--cg4), var(--cg5), var(--cg5), var(--cg6), var(--cg6), var(--cg7),
+    var(--cg7), var(--cg8), var(--cg8),
+    linear-gradient(-45deg, #fff0 0 32.25%, #0002 50%, #000 77.5%) var(--ts),
+    linear-gradient(-45deg, #fff0 0 32.25%, #000 60%) var(--ts),
+    repeating-linear-gradient(90deg, var(--c0) 0 5%, var(--c1) 0 25%) var(--ts);
+}
+
+.page-container {
+  background-color: rgb(255, 255, 255); /* Opaque white background */
+  margin: 6.5rem; /* Adjust as needed */
+  padding: 4rem; /* Adjust as needed */
+  height: 100%;
+  text-align: justify;
+  font-family: "Comic Neue", cursive;
+}
+
+a {
+  text-decoration: none;
+  color: #146c92;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #92146c; /* Change text color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+h1 {
+  font-size: 2.25rem; /* Adjust the font size as needed */
+  color: #1d1a1a; /* Choose a suitable text color */
+  margin-top: 1rem; /* Add some top margin */
+  margin-bottom: 1rem; /* Add some bottom margin */
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+  font-weight: 600;
+  font-style: italic;
+  /* Add more styles as needed, such as background color, padding, border-radius, etc. */
+}
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 0.9rem;
+}
+
+h1,
+h4,
+h2,
+h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+p {
+  padding-bottom: 0.5rem;
+}
+
+p {
+  font-weight: 400;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  font-size: inherit;
+  margin: 1rem;
+  
+}
+
+th {
+  border-bottom-width: 1px;
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: left;
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+td {
+  padding: 0.5rem;
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+hr {
+  padding: 0;
+  margin: 0 0 8px;
+  height: 4px;
+  border: none;
+  background: #83d0be;
+  box-sizing: content-box;
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+}
+
+li {
+  display: block;
+  list-style-type: none; /* Hide default bullet points */
+  position: relative;
+  margin: 0.15rem 0.25rem;
+  width: inherit;
+}
+
+li::before {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute;
+  left: -20px; /* Adjust as needed for bullet position */
+  top: 0.75rem; /* Adjust as needed for bullet position */
+  transform: translateY(-50%);
+  width: 0.5rem; /* Adjust as needed for bullet size */
+  height: 0.5rem; /* Adjust as needed for bullet size */
+  background-color: rgb(11, 107, 185); /* Color of the bullet */
+  border-radius: 50%; /* Make the bullet round */
+}
+
+.figure {
+  display: block;
+  margin: 2rem;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  padding: 2rem;
+  height: 100%;
+}
+
+img {
+  margin-right: 24px;
+  margin-left: 16px;
+  max-width: 100%;
+  border: 0;
+  vertical-align: middle;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  margin-bottom: 15px;
+}
+
+figcaption {
+  font-size: 0.8em;
+}
+
+.pullquote {
+  background-color: #fff6b6;
+  margin: 0 0 15px 15px;
+  max-width: 300px;
+  width: 50%;
+  float: right;
+  clear: right;
+  padding: 1rem;
+  margin: 10px 15px 10px 15px;
+}
+
+.quotecontent {
+  margin: 10px 15px 10px 15px;
+}
+
+strong {
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.education_links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.education_links li {
+  font-size: 1.1rem;
+  padding: 0 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.education_links li:hover {
+  transform: scale(1.1); /* Grow on hover */
+  color: darken(#000, 10%); /* Darken the color on hover */
+}

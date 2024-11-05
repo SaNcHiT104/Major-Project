@@ -1,7 +1,10 @@
 import classes from "./AppointMentHeader.module.css";
 import { useState } from "react";
-export default function AppointMentHeader() {
-  const [upcoming, changeUpcoming] = useState(true);
+export default function AppointMentHeader({
+  upcomingAppointmentHandler,
+  pastAppointmentHandler,
+  upcoming,
+}) {
   return (
     <>
       <p className={classes.heading}>Appointments</p>
@@ -9,14 +12,14 @@ export default function AppointMentHeader() {
         <button
           className={classes.btn}
           id={upcoming && classes.active}
-          onClick={() => changeUpcoming(true)}
+          onClick={upcomingAppointmentHandler}
         >
           Upcoming
         </button>
         <button
           className={classes.btn}
           id={!upcoming && classes.active}
-          onClick={() => changeUpcoming(false)}
+          onClick={pastAppointmentHandler}
         >
           Past
         </button>

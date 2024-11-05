@@ -1,7 +1,8 @@
 import classes from "./Footer.module.css";
 // import "./Footer.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 export default function Footer() {
+  const location = useLocation();
   return (
     <div className={classes.container}>
       <div className={classes.upContainer}>
@@ -15,14 +16,25 @@ export default function Footer() {
           >
             <button className={classes.btn}>Home</button>
           </NavLink>
-          <NavLink
-            to="/patient/me/findAdoctor"
-            className={({ isActive }) =>
-              isActive ? classes.active : undefined
-            }
-          >
-            <button className={classes.btn}>Find a Doctor</button>
-          </NavLink>
+          {location.pathname.includes("patient") ? (
+            <NavLink
+              to="/patient/me/findAdoctor"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              <button className={classes.btn}>Find a Doctor</button>
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/doctor/me/appointment"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              <button className={classes.btn}>Appointment</button>
+            </NavLink>
+          )}
           <NavLink
             to="/patient/me/education"
             className={({ isActive }) =>

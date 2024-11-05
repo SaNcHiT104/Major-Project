@@ -10,8 +10,14 @@ import Appointment from "./Components/Appointments/Appointment.jsx";
 import DoctorProfilePatient from "./Components/Doctor/DoctorProfilePatient/DoctorProfilePatient.jsx";
 import PatientRoot from "./Components/Patient/PatientRoute/PatientRoot.jsx";
 import SignUp from "./Components/authComponent/Signup.jsx";
+import PregnancyPanic from "./Components/Education/PregnancyPanic.js";
+import SexualityWTF from "./Components/Education/SexualityWTF.js";
+import NavigatingConsent from "./Components/Education/NavigatingConsent.js";
+import SexualAnatomy from "./Components/Education/SexualAnatomy.js";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./util/http.js";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -30,7 +36,32 @@ export default function App() {
           element: <WelcomePage />,
         },
         {
-          path: "patient/me",
+          path: "education",
+          children: [
+            {
+              index: true,
+              element: <Education />,
+            },
+            {
+              path: "sexuality_wtf_is_it_anyway",
+              element: <SexualityWTF />,
+            },
+            {
+              path: "pregnancy_panic",
+              element: <PregnancyPanic />,
+            },
+            {
+              path: "navigating_consent",
+              element: <NavigatingConsent />,
+            },
+            {
+              path: "sexual_anatomy",
+              element: <SexualAnatomy />,
+            },
+          ],
+        },
+        {
+          path: "patient/:id",
           element: <PatientRoot />,
           children: [
             {
@@ -44,10 +75,6 @@ export default function App() {
             {
               path: "findADoctor",
               element: <DoctorProfilePatient />,
-            },
-            {
-              path: "education",
-              element: <Education />,
             },
           ],
         },
@@ -67,15 +94,16 @@ export default function App() {
               path: "appointment",
               element: <Appointment />,
             },
-            {
-              path: "education",
-              element: <Education />,
-            },
           ],
         },
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
   // return <DoctorProfilePatient />;
 }

@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import classes from "./FrontPage.module.css";
 // import img from "../../assets/headerimage.jpg";
 export default function FrontPage() {
+  const location = useLocation();
   return (
     <header className={classes.header}>
       <div className={classes.container}>
@@ -18,9 +19,12 @@ export default function FrontPage() {
               and social well being. It's not just about treatment, it's about
               healing.
             </p>
-            <NavLink to="/patient/me/findAdoctor">
+            <NavLink to="/patient/me/findAdoctor"></NavLink>
+            {location.pathname == "/patient/me/home" ? (
               <button className={classes.findDoctor}>Find A doctor</button>
-            </NavLink>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         {/* <img src={img} className={classes.right} /> */}
