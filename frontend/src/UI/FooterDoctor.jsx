@@ -2,13 +2,14 @@ import classes from "./Footer.module.css";
 // import "./Footer.module.css";
 import { NavLink } from "react-router-dom";
 export default function Footer() {
+  const userId = localStorage.getItem("userId");
   return (
     <div className={classes.container}>
       <div className={classes.upContainer}>
         <div className={classes.menu}>
           <p className={classes.head}>Menu</p>
           <NavLink
-            to="/doctor/:id/home"
+            to={`/doctor/${userId}/home`}
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -16,7 +17,7 @@ export default function Footer() {
             <button className={classes.btn}>Home</button>
           </NavLink>
           <NavLink
-            to="/doctor/:id/appointment"
+            to={`/doctor/${userId}/appointment`}
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -24,7 +25,7 @@ export default function Footer() {
             <button className={classes.btn}>Appointment</button>
           </NavLink>
           <NavLink
-            to="/education"
+            to={`/doctor/${userId}/education`}
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -32,7 +33,7 @@ export default function Footer() {
             <button className={classes.btn}>Eduction</button>
           </NavLink>
           <NavLink
-            to="/doctor/:id/profile"
+            to={`/doctor/${userId}/profile`}
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
