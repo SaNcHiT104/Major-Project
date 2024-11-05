@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={classes.menu}>
           <p className={classes.head}>Menu</p>
           <NavLink
-            to="/doctor/me/home"
+            to="/doctor/:id/home"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -16,7 +16,7 @@ export default function Footer() {
             <button className={classes.btn}>Home</button>
           </NavLink>
           <NavLink
-            to="/doctor/me/appointment"
+            to="/doctor/:id/appointment"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -24,7 +24,7 @@ export default function Footer() {
             <button className={classes.btn}>Appointment</button>
           </NavLink>
           <NavLink
-            to="/doctor/me/education"
+            to="/education"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
@@ -32,7 +32,7 @@ export default function Footer() {
             <button className={classes.btn}>Eduction</button>
           </NavLink>
           <NavLink
-            to="/doctor/me/profile"
+            to="/doctor/:id/profile"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }

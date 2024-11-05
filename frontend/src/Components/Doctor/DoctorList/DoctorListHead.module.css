@@ -8,6 +8,7 @@
 }
 .doctorlisthead
 {
+    overflow-x: hidden;
     background-color: var(--bg-back);
 }
 .Liststart

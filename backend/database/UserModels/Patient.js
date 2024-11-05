@@ -36,8 +36,8 @@ const patientSchema = new mongoose.Schema({
     },
   },
   address: { type: String, trim: true },
-  allergies: {type: String},
-  DOB: {type: Date},
+  allergies: { type: String },
+  DOB: { type: Date },
   tokens: {
     token: {
       type: String,

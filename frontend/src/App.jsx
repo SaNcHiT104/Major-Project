@@ -17,15 +17,15 @@ import NavigatingConsent from "./Components/Education/NavigatingConsent.js";
 import SexualAnatomy from "./Components/Education/SexualAnatomy.js";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute, {
   redirectToHome,
 } from "./Components/authComponent/AuthRoute.js";
-
-// import { queryClient } from "./util/appointment.js";
+import { queryClient } from "./util/http.js";
+import PatientEHR from "./Components/EHR/PatientEHR.js";
 export default function App() {
   const isAuthenticated = localStorage.getItem("token") !== null;
-  console.log(isAuthenticated)
+  console.log(isAuthenticated);
   // const redirectToHome = useRedirectToLogin();
   const router = createBrowserRouter([
     {
@@ -58,6 +58,10 @@ export default function App() {
             {
               path: "profile",
               element: <PatientProfile />,
+            },
+            {
+              path: "patientEHR",
+              element: <PatientEHR />,
             },
             {
               path: "findADoctor",
@@ -151,7 +155,6 @@ export default function App() {
     },
   ]);
 
-  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

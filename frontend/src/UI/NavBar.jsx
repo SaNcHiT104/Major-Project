@@ -14,7 +14,8 @@ export default function NavBar() {
     logoutAction();
     navigate("/login");
   }
-
+  const isPatient = location.pathname.includes("patient");
+  const isDoctor = location.pathname.includes("doctor");
   return (
     <nav className={classes.header}>
       <img src={img} className={classes.logo} alt="Logo"></img>
@@ -51,7 +52,7 @@ export default function NavBar() {
             />
           ) : (
             <NavLink
-              to="/doctor/me/appointment"
+              to="/doctor/:id/appointment"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }

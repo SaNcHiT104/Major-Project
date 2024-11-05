@@ -19,12 +19,11 @@ export default function FrontPage() {
               and social well being. It's not just about treatment, it's about
               healing.
             </p>
-            <NavLink to="/patient/me/findAdoctor"></NavLink>
-            {location.pathname == "/patient/me/home" ? (
-              <button className={classes.findDoctor}>Find A doctor</button>
-            ) : (
-              ""
-            )}
+            <NavLink to="/patient/me/findAdoctor">
+              {location.pathname.includes("patient") && (
+                <button className={classes.findDoctor}>Find A doctor</button>
+              )}
+            </NavLink>
           </div>
         </div>
         {/* <img src={img} className={classes.right} /> */}

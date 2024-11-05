@@ -1,0 +1,7 @@
+.medical-history-card {
+  display: flex; /* Arrange diagnosis and date side-by-side */
+  justify-content: space-between; /* Align content horizontally */
+  align-items: center; /* Align content vertically */
+  padding: 0.5rem 1rem; /* Padding for the card */
+  border-bottom: 1px solid #ddd; /* Add a subtle border */
+}
