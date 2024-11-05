@@ -1,10 +1,6 @@
-import { queryClient } from "./http";
-// import { QueryClient } from "@tanstack/react-query";
-
 export async function fetchPatientUpcomingAppointments() {
   const response = await fetch(`http://localhost:3000/doctor/me/appointments`, {
     method: "GET",
-    //   body: JSON.stringify({ status }),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -19,7 +15,6 @@ export async function fetchPatientUpcomingAppointments() {
   return data;
 }
 export async function updateAppointmentStatus({ id }) {
-  // console.log("hello" + id);
   const response = await fetch(`http://localhost:3000/doctor/me/appointment`, {
     method: "PATCH",
     body: JSON.stringify({ status: true, aptId: id }),
@@ -35,5 +30,5 @@ export async function updateAppointmentStatus({ id }) {
   }
   return response.json();
 }
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjAwMGQ4ZjVhZDdjYjkxNDNkMjUyMDIiLCJ1c2VyVHlwZSI6IkRPQ1RPUiIsImlhdCI6MTcxMTI3OTUwMywiZXhwIjoxNzExODg0MzAzfQ.Btencsk_-SzNIpkRT162pyj-TYmMztS8IdA7N8tTskU
+
 export async function addPrescription() {}

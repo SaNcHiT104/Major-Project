@@ -1,68 +1,32 @@
 import classes from "./PatientEHR.module.css";
+import { patientpro } from "../../util/data";
 import MedicalHistoryCard from "./MedicalHistoryCard";
-import { useQuery } from "@tanstack/react-query";
-import { fetchPatientEHR } from "../../util/ehr";
-import { useParams } from "react-router-dom";
-import LoadingIndicator from "../../UI/LoadingIndicator";
-import ErrorBlock from "../../UI/ErrorBlock";
 
 const PatientEHR = () => {
-  const { patientId: pid } = useParams();
-  console.log("PID: " + pid);
   const {
-    data: patientpro,
-    isPending,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ["getPatientInfo", "EHR"],
-    queryFn: () => fetchPatientEHR(pid),
-  });
-
-  let content;
-
-  if (isPending) {
-    return (
-      <div className={classes["ehr-container"]}>
-        <LoadingIndicator />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className={classes["ehr-container"]}>
-        <ErrorBlock
-          title="Fetch Error"
-          message={`Failed to load EHR data: ${error}`}
-        />
-      </div>
-    );
-  }
-
-  const { diagnosis, prescriptions, bloodGroup, height, weight, bmi } =
-    patientpro.ehr;
-
-  const { name, DOB, allergies } = patientpro.ehr.patientId;
-
-  content = (
-    <>
-      {" "}
+    name,
+    DOB,
+    allergies,
+    height,
+    weight,
+    bmi,
+    diagnosis,
+    prescriptions,
+  } = patientpro;
+  return (
+    <div className={classes["ehr-container"]}>
       {/* Patient Summary Section */}
       <div className={classes["patient-summary"]}>
         <h2>{name.toUpperCase()}</h2>
       </div>
+
       {/* Critical Info Section */}
       <div className={classes["critical-info"]}>
         <h3>CRITICAL INFO</h3>
         <div className={classes["personal-details"]}>
           <p>
             <strong>Date of Birth: </strong> <br />
-            {new Date(DOB).toLocaleDateString("en-US", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })}
+            {DOB}
           </p>
           <p>
             <strong>Allergies: </strong>
@@ -74,19 +38,16 @@ const PatientEHR = () => {
             <br /> {height}
           </p>
           <p>
-            <strong>Weight (in KG): </strong>
+            <strong>Weight: </strong>
             <br /> {weight}
           </p>
           <p>
             <strong>BMI: </strong>
             <br /> {bmi}
           </p>
-          <p>
-            <strong>Blood Group: </strong> <br />
-            {bloodGroup}
-          </p>
         </div>
       </div>
+
       {/* Medical Consultations section */}
       <div className={classes["medical-history"]}>
         <h3>MEDICAL HISTORY</h3>
@@ -100,6 +61,7 @@ const PatientEHR = () => {
           ))}
         </ul>
       </div>
+
       {/* Medications Section */}
       <div className={classes["medications"]}>
         <h3>PRESCRIPTIONS</h3>
@@ -121,21 +83,14 @@ const PatientEHR = () => {
                 <td>{medication.dosage}</td>
                 <td>{medication.frequency}</td>
                 {/* Display formatted date */}
-                <td>
-                  {new Date(medication.date).toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </td>
+                <td>{new Date(medication.date).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
-  return <div className={classes["ehr-container"]}>{content}</div>;
 };
 
 export default PatientEHR;
