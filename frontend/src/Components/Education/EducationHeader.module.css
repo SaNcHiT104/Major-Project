@@ -15,10 +15,32 @@
   /* zoom: 0.5; */
   margin-left: 20rem;
 }
+@keyframes moveinRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveinLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .heading_primary {
   margin-top: 2.5rem;
   font-size: 4.5rem;
   /* letter-spacing: 0.3rem; */
+  animation: moveinLeft 0.8s ease-in;
+}
+.heading_secondary {
+  animation: moveinRight 0.8s ease-in;
 }
 .left {
   position: absolute;

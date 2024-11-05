@@ -8,6 +8,7 @@ import { fetchDoctorProfile, updateDoctorProfile } from "../../../util/doctor.";
 import { queryClient } from "../../../util/http";
 import ErrorBlock from "../../../UI/ErrorBlock";
 import LoadingIndicator from "../../../UI/LoadingIndicator";
+import { motion } from "framer-motion";
 export default function PatientProfile() {
   const {
     data: patientpro,
@@ -147,7 +148,7 @@ export default function PatientProfile() {
     content = <LoadingIndicator />;
   } else if (patientpro) {
     content = (
-      <div className={classes.body}>
+      <motion.div className={classes.body}>
         <div className={classes.left}>
           <div className={classes.leftup}>
             <div className={classes.header}>
@@ -353,23 +354,37 @@ export default function PatientProfile() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
   return (
     <>
       <div className={classes.container}>
         <div className={classes.header}>
-          <p className={classes.headingPrimary}>Doctor Profile</p>
-          <button
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            className={classes.headingPrimary}
+          >
+            Doctor Profile
+          </motion.p>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
             className={classes.btn}
             id={isEdit && classes.btnactive}
             onClick={handleEdit}
           >
             {isEdit ? "Submit" : "Edit"}
-          </button>
+          </motion.button>
         </div>
-        {content}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          {content}
+        </motion.div>
       </div>
     </>
   );

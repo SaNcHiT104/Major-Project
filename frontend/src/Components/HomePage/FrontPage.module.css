@@ -14,6 +14,28 @@
   margin-top: 2.5rem;
   font-size: 4.5rem;
   /* letter-spacing: 0.3rem; */
+  animation: moveinLeft 0.7s ease-in;
+}
+@keyframes moveinRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveinLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.heading_secondary {
+  animation: moveinRight 0.7s ease-in;
 }
 .left {
   position: absolute;
@@ -52,7 +74,6 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 15px;
-  transition: all 0.5s ease;
 }
 
 .findDoctor:hover {

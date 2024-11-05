@@ -7,6 +7,7 @@ import PatientRightDown from "./PatientRightDown";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import LoadingIndicator from "../../../UI/LoadingIndicator";
 import ErrorBlock from "../../../UI/ErrorBlock";
+import { motion } from "framer-motion";
 import {
   updatePatientProfile,
   fetchPatientProfile,
@@ -348,7 +349,14 @@ export default function PatientProfile() {
     <>
       <div className={classes.container}>
         <div className={classes.header}>
-          <p className={classes.headingPrimary}>Patient Profile</p>
+          <motion.p
+            className={classes.headingPrimary}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            Patient Profile
+          </motion.p>
           {mutatePending && (
             <p className={classes.submitting}>Submitting......</p>
           )}
@@ -362,7 +370,13 @@ export default function PatientProfile() {
             </button>
           )}
         </div>
-        {content}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          {content}
+        </motion.div>
       </div>
     </>
   );

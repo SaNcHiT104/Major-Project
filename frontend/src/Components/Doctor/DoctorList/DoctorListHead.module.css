@@ -1,84 +1,98 @@
 :root {
-    --primary: #F04E30;
-    --text: #58595B;
-    --light-text: #454545;
-    --black: #000000;
-    --white: #FFFFFF;
-    --bg-back: #F6F6F6;
+  --primary: #f04e30;
+  --text: #58595b;
+  --light-text: #454545;
+  --black: #000000;
+  --white: #ffffff;
+  --bg-back: #f6f6f6;
 }
-.doctorlisthead
-{
-    overflow-x: hidden;
-    background-color: var(--bg-back);
+.doctorlisthead {
+  overflow-x: hidden;
+  background-color: var(--bg-back);
 }
-.Liststart
-{
-    position: relative;
-    height: 400px;
-    background-color: blue;
+.Liststart {
+  position: relative;
+  height: 400px;
+  background-color: blue;
 }
-.doctorlist_image{
-    
-    width: 100%;
-    height: 400px;
+.doctorlist_image {
+  margin-left: -1rem;
+  width: 100%;
+  height: 400px;
 }
-.doctorlist_image img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
+.doctorlist_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.doctortext
-{
-    width: 100%;
-    top: 20%;
-    font-size: 80px;
-    position:absolute;
-    color:white;
-    text-align: center;
+.select {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 5rem;
+  border: none;
+  margin-top: 2rem;
+  height: 3rem;
+  width: 25rem;
+  text-transform: uppercase;
+  border: 1px solid rgb(87, 104, 158);
+  font-weight: 350;
+  /* background-color: rgb(158, 182, 186); */
+  /* color: white; */
 }
-.locationlist
-{
-    /* background-color: #F6F6F6; */
-    margin-top: 20px;
-    display:flex;
-    justify-content: space-evenly;
-    
+.doctortext {
+  /* font-family: "Times New Roman", Times, serif; */
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-top: 2rem;
+  width: 100%;
+  top: 40%;
+  font-size: 80px;
+  position: absolute;
+  color: white;
+  text-align: center;
+}
+.locationlist {
+  /* background-color: #F6F6F6; */
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .button {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .button:hover {
-    background-color: blue;
-    box-shadow: 0px 15px 20px rgba(88, 85, 238, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-  }
-  
-  .button:active {
-    transform: translateY(-1px);
-  }
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
 
-.Doctor-display
-{
-    margin-top:50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 60px;
-    margin-right: 20px;
-    background-color: #F6F6F6;
+.button:hover {
+  background-color: blue;
+  box-shadow: 0px 15px 20px rgba(88, 85, 238, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.Doctor-display {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 60px;
+  margin-right: 20px;
+  background-color: #f6f6f6;
 }

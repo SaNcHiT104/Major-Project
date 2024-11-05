@@ -33,6 +33,7 @@ ehrRouter.post(
   async (req, res) => {
     try {
       const patientId = req.user._id;
+      //console.log("FROM EHR" + patientId);
       const ehr = new EHR({
         ...req.body,
         patientId,
@@ -69,9 +70,9 @@ ehrRouter.patch(
         {
           $push: {
             diagnosis: req.body?.diagnosis,
-            prescriptions: req.body?.prescriptions
+            prescriptions: req.body?.prescriptions,
           },
-          ...updateData
+          ...updateData,
         },
         { new: true }
       );

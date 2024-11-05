@@ -1,10 +1,11 @@
 import classes from "./PatientEHR.module.css";
 import MedicalHistoryCard from "./MedicalHistoryCard";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPatientEHR } from "../../util/ehr";
+import { fetchPatientEHR } from "../../util/ehr.js";
 import { useParams } from "react-router-dom";
 import LoadingIndicator from "../../UI/LoadingIndicator";
 import ErrorBlock from "../../UI/ErrorBlock";
+import { motion } from "framer-motion";
 
 const PatientEHR = () => {
   const { patientId: pid } = useParams();
@@ -15,7 +16,7 @@ const PatientEHR = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["getPatientInfo", "EHR"],
+    queryKey: ["getPatientInfo", pid],
     queryFn: () => fetchPatientEHR(pid),
   });
 
@@ -135,7 +136,16 @@ const PatientEHR = () => {
       </div>
     </>
   );
-  return <div className={classes["ehr-container"]}>{content}</div>;
+  return (
+    <motion.div
+      className={classes["ehr-container"]}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {content}
+    </motion.div>
+  );
 };
 
 export default PatientEHR;

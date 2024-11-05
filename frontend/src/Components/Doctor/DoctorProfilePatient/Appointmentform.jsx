@@ -5,20 +5,20 @@ import classes from './Appointmentform.module.css'
 export default function Appointmentform() {
     const [didEdit,setDidEdit]=useState({
         fullname:false,
-        contactInfo:false,
+        phonenumber:false,
         email:false,
         date:false,
-        description:false,
+        purpose:false,
     });
     const [enteredValues,setEnteredValues]=useState({
         fullname:'',
-        contactInfo:'',
+        phonenumber:'',
         email:'',
         date:'',
-        description:'',
+        purpose:'',
     });
     const emailIsInvalid=didEdit.email && !enteredValues.email.includes('@');
-    const phoneIsValid=didEdit.contactInfo && enteredValues.contactInfo.length!=10;
+    const phoneIsValid=didEdit.phonenumber && enteredValues.phonenumber.length!=10;
     function handleInput(identifier,event)
     {
         setEnteredValues((prevValues)=>
@@ -43,10 +43,10 @@ export default function Appointmentform() {
         console.log(enteredValues);
         setEnteredValues({
             fullname:'',
-            contactInfo:'',
+            phonenumber:'',
             email:'',
             date:'',
-            description:'',
+            purpose:'',
         })
     }
   return (
@@ -61,15 +61,15 @@ export default function Appointmentform() {
                     onChange={(event)=>handleInput('fullname',event)}
                     />
             </div>
-            <div className={classes['row-contactInfo']}>
+            <div className={classes['row-phonenumber']}>
                 <div>
                     <div className={classes.head}>Phone Number</div>
                     <input 
                         type="text"
-                        name="contactInfo" 
-                        onBlur={()=>handleInputBlur('contactInfo')}
-                        value={enteredValues.contactInfo}
-                        onChange={(event)=>handleInput('contactInfo',event)}/>
+                        name="phonenumber" 
+                        onBlur={()=>handleInputBlur('phonenumber')}
+                        value={enteredValues.phonenumber}
+                        onChange={(event)=>handleInput('phonenumber',event)}/>
                 </div>
                 <div className={classes['control-error']}>{phoneIsValid && <p>Please enter a 10 digit phone number </p>}</div>
             </div>
@@ -97,9 +97,9 @@ export default function Appointmentform() {
                 <div className={classes.head}> Purpose of Appointment</div>
                 <input 
                     type="text"
-                    name="description" 
-                    value={enteredValues.description}
-                    onChange={(event)=>handleInput('description',event)}/>
+                    name="purpose" 
+                    value={enteredValues.purpose}
+                    onChange={(event)=>handleInput('purpose',event)}/>
             </div>
             <br/>
             <button className={classes['book_button']}>Book Appointment</button>

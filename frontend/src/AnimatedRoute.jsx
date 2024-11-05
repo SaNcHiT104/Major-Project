@@ -29,7 +29,6 @@ import AuthRoute, {
 import { queryClient } from "./util/http.js";
 import PatientEHR from "./Components/EHR/PatientEHR.js";
 export default function AnimatedRoute() {
-  const isAuthenticated = localStorage.getItem("token") !== null;
   const router = createBrowserRouter([
     {
       path: "/",
@@ -40,14 +39,24 @@ export default function AnimatedRoute() {
         },
         {
           path: "signup",
-          element: isAuthenticated ? redirectToHome() : <SignUp />,
+          element:
+            localStorage.getItem("token") !== null ? (
+              redirectToHome()
+            ) : (
+              <SignUp />
+            ),
         },
         {
           path: "login",
-          element: isAuthenticated ? redirectToHome() : <WelcomePage />,
+          element:
+            localStorage.getItem("token") !== null ? (
+              redirectToHome()
+            ) : (
+              <WelcomePage />
+            ),
         },
         {
-          path: "patient/:id",
+          path: "patient/:patientId",
           element: (
             <AuthRoute>
               <PatientRoot />
@@ -126,6 +135,10 @@ export default function AnimatedRoute() {
             {
               path: "appointment",
               element: <Appointment />,
+            },
+            {
+              path: "viewEHR/:patientId",
+              element: <PatientEHR />,
             },
             {
               path: "education",
