@@ -28,7 +28,7 @@ const doctorSchema = new mongoose.Schema({
   specialty: { type: String },
   officeContactInfo: { type: String },
   officeAddress: { type: String, trim: true },
-  qualification: { type: String },
+  qualification: { type: [String] },
   password: {
     type: String,
     trim: true,

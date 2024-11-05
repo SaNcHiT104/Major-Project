@@ -324,13 +324,13 @@ export default function PatientProfile() {
       let tempcheckGender =
         typed.gender &&
         !(
-          formData.gender.toLowerCase() === "male" ||
-          formData.gender.toLowerCase() === "female"
+          formData.gender?.toLowerCase() === "male" ||
+          formData.gender?.toLowerCase() === "female"
         );
       changeCheckAllerror((prev) => ({ ...prev, ["gender"]: tempcheckGender }));
       let checkAge = typed.age && formData.age <= 0;
       changeCheckAllerror((prev) => ({ ...prev, ["age"]: checkAge }));
-      let checkAddrss = typed.address && formData.address.length === 0;
+      let checkAddrss = typed.address && formData.address?.length === 0;
       changeCheckAllerror((prev) => ({ ...prev, ["address"]: checkAddrss }));
       let submitcheck =
         formData.contact?.length === 10 &&

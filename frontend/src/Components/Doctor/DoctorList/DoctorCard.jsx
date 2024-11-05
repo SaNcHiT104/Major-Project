@@ -6,6 +6,7 @@ import QualificationList from "./QualificationList";
 import { Link } from "react-router-dom";
 import img from "../../../assets/doctorCardImage.jpg";
 import { motion } from "framer-motion";
+
 export default function DoctorCard(props) {
   const [expertise, setExpertise] = useState(true);
   const [quali, setQualification] = useState(false);
@@ -17,6 +18,8 @@ export default function DoctorCard(props) {
     setQualification(true);
     setExpertise(false);
   }
+
+  console.log(props);
   return (
     <motion.div whileHover={{ scale: 1.04 }}>
       <div className={classes.doctorlist_cards}>
@@ -28,6 +31,7 @@ export default function DoctorCard(props) {
             <div className={classes.doctorlist_right}>
               <div className={classes["content-top"]}>
                 <div className={classes.name}>{props.name}</div>
+
                 <div className={classes.post}>{props.post}</div>
               </div>
               <hr />
@@ -37,6 +41,15 @@ export default function DoctorCard(props) {
                   <motion.div className={classes} whileHover={{ scale: 1.1 }}>
                     <Link to="doctorprofile">Visit the Profile</Link>
                   </motion.div>
+                  <div className={classes}>
+                    {/* <Link
+                      to={`/doctor/${userId}/home`}
+                      className={({ isActive }) =>
+                        isActive ? classes.active : undefined
+                      }
+                    >
+                    </Link> */}
+                  </div>
                 </div>
                 <div className={classes.row2}>
                   <div className={classes.location}>Gurgram</div>
@@ -58,8 +71,8 @@ export default function DoctorCard(props) {
               </div>
             </div>
             <div className={classes["bottom-content"]}>
-              {expertise && <SpecialisationList />}
-              {quali && <QualificationList />}
+              {expertise && <SpecialisationList sl={props.sl} />}
+              {quali && <QualificationList ql={props.ql} />}
             </div>
           </div>
           <div>
@@ -67,7 +80,7 @@ export default function DoctorCard(props) {
               className={classes.Button}
               whileHover={{ scale: 1.08 }}
             >
-              Meet The Doctor
+              <Link to={`doctorprofile/${props.id}`}>Meet The Doctor</Link>
             </motion.button>
           </div>
         </div>

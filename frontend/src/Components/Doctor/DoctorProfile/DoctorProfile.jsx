@@ -30,10 +30,10 @@ export default function PatientProfile() {
     onMutate: async (formNewData) => {
       const newData = formNewData;
       await queryClient.cancelQueries({
-        queryKey: ["getPatientInfo"],
+        queryKey: ["getDoctorInfo"],
       });
-      const prevData = queryClient.getQueryData(["getPaitentInfo"]);
-      queryClient.setQueryData(["getPatientInfo"], newData);
+      const prevData = queryClient.getQueryData(["getDoctorInfo"]);
+      queryClient.setQueryData(["getDoctorInfo"], newData);
       return { prevData };
     },
     onError: (error, data, context) => {
@@ -41,7 +41,7 @@ export default function PatientProfile() {
     },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["getPatientInfo"],
+        queryKey: ["getDoctorInfo"],
       });
     },
   });
@@ -51,6 +51,8 @@ export default function PatientProfile() {
       alert("Please enter correct details");
     } else {
       if (isEdit) {
+        const allQualification = formData.qualification?.split(", ");
+        formData.qualification = allQualification;
         mutate(formData);
       }
       changeIsEdit(!isEdit);
@@ -71,7 +73,7 @@ export default function PatientProfile() {
       gender: patientpro?.gender,
       age: patientpro?.age,
       specialty: patientpro?.specialty,
-      qualification: patientpro?.qualification,
+      qualification: patientpro?.qualification?.join(", "),
       rating: patientpro?.totalRating,
     });
   }, [patientpro]);
@@ -298,7 +300,7 @@ export default function PatientProfile() {
               </div>
 
               <div>
-                <p className={classes.overviewHeading}>Specialty:</p>
+                <p className={classes.overviewHeading}>Speciality:</p>
                 {isEdit && (
                   <input
                     type="text"

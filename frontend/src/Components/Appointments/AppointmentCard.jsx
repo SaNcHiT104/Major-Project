@@ -34,13 +34,19 @@ export default function AppointmentCard({ obj, state, handleRemove }) {
           <p className={classes.headingContent}>{obj.description}</p>
           <p className={classes.headingContent}>{formattedDate}</p>
         </div>
-        <div className={classes.checkBlock} onClick={viewEHRHandler}>
-          <button className={classes.button}>
-            <span className={classes.transition}></span>
-            <span className={classes.gradient}></span>
-            <span className={classes.label}>View EHR</span>
-          </button>
-        </div>
+        {state && (
+          <motion.div
+            className={classes.checkBlock}
+            onClick={viewEHRHandler}
+            whileHover={{ scale: 1.1 }}
+          >
+            <button className={classes.button}>
+              <span className={classes.transition}></span>
+              <span className={classes.gradient}></span>
+              <span className={classes.label}>View EHR</span>
+            </button>
+          </motion.div>
+        )}
         {state && (
           <div className={classes.checkBlock} onClick={handleCheckChange}>
             <motion.button

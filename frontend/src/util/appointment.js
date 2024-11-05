@@ -32,3 +32,30 @@ export async function updateAppointmentStatus({ id }) {
 }
 
 export async function addPrescription() {}
+
+
+export const createPatientAppointment=async({aptData})=>{
+  try{
+    const response=await fetch("http://localhost:3000/patient/me/appointment",
+    {
+      method: "POST",
+      body: {
+        ...aptData,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+    if (!response.ok) {
+      // console.log("Could not create appointment");
+      throw new Error("Could not create appointment");
+    }
+    const resData = await response.json();
+    console.log("resdata",resData);
+    return resData;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}

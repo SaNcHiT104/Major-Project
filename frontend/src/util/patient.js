@@ -56,3 +56,29 @@ export async function fetchPatientProfile() {
 
 //jainsanchit14112002@gmail.com
 //Hello@123
+
+export const fetchDoctorList = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:3000/patient/me/doctor_list",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    if (!response.ok) {
+      console.log("Could not get doctor list");
+      throw new Error("Could not get doctor list");
+    }
+    const resData = await response.json();
+    console.log("resdata",resData);
+    return resData;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+

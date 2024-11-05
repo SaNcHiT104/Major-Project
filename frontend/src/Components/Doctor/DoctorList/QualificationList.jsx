@@ -1,14 +1,18 @@
 import React from 'react'
 
-export default function QualificationList() {
+
+export default function QualificationList(props) {
   return (
     <div>
         <div className="qualificationlist">
         <ul>
-            <li>M.B.B.S.</li>
-            <li>M.B.B.S.</li>
-            <li>M.B.B.S.</li>
-            <li>M.B.B.S.</li>
+          {
+            props.ql?.map((data,idx)=>{
+              return (
+                <li id={idx}>{data}</li>
+              )
+            })
+          }
         </ul>
         </div>
     </div>
