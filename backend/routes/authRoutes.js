@@ -3,6 +3,8 @@ import Patient from "../database/UserModels/Patient.js";
 import Doctor from "../database/UserModels/Doctor.js";
 import Admin from "../database/UserModels/Admin.js";
 import checkAuthMiddleware from "../middlewares/auth.js";
+import jwt from "jsonwebtoken";
+import { KEY } from "../AuthManager/auth.js";
 
 const authRouter = new express.Router();
 
@@ -28,7 +30,9 @@ authRouter.post("/signup", async (req, res) => {
       });
     }
     if (!user) {
-      return res.status(401).json({ error: " BAD REQUEST! Validation errors detected." });
+      return res
+        .status(401)
+        .json({ error: " BAD REQUEST! Validation errors detected." });
     }
     // console.log(user);
     try {
@@ -40,7 +44,9 @@ authRouter.post("/signup", async (req, res) => {
         .json({ message: "Signup successful", user, token });
     } catch (error) {
       console.log("Error!", error);
-      return res.status(409).json({ error: "Error! A user with same email already exists!" });
+      return res
+        .status(409)
+        .json({ error: "Error! A user with same email already exists!" });
     }
   } catch (error) {
     console.error("Error during signup:", error);
@@ -92,5 +98,23 @@ authRouter.post(
     }
   }
 );
+
+authRouter.post("/decodeToken", async (req, res) => {
+  try {
+    const token = req.body.token;
+    if (!token) {
+      return res.status(401).json({ message: "Unauthorized: Missing token" });
+    }
+    try {
+      const decodedToken = jwt.verify(token, KEY);
+    } catch (error) {
+      return res.status(401).json({ message: "Unauthorized: Invalid token" });
+    }
+    // send the userType to the frontend, if we need the id, we can send that also.
+    return res.status(200).json({ userType: decodedToken.userType });
+  } catch (error) {
+    return res.status(500).json({ error: "INTERNAL SERVOR ERROR!" });
+  }
+});
 
 export default authRouter;

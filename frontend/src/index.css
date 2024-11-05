@@ -1,39 +1,37 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  :root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-  --color-primary:#0B4CCD;
-  --color-secondary:#ffffff;
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
+  --color-primary: #0b4ccd;
+  --color-secondary: #ffffff;
 
   /* Btns */
-  --color-btnhover-background:#5b29b9;
-  --color-btnhover-text:#FFFFFF;
+  --color-btnhover-background: #5b29b9;
+  --color-btnhover-text: #ffffff;
 
-  --color-btnactive-background:#295eb9;
-  --color_btnactive_text:#FFFFFF;
+  --color-btnactive-background: #295eb9;
+  --color_btnactive_text: #ffffff;
 
-  --color-btn-backGround:#c6d4d2;
-  --color-btn-text:#000000;
+  --color-btn-backGround: #c6d4d2;
+  --color-btn-text: #000000;
 
-  --color_primary_heading:#800080;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
+  --color_primary_heading: #800080;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

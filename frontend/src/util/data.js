@@ -28,3 +28,14 @@ export const pastAppointments = [
     date: "24/03/2013",
   },
 ];
+
+export const patientpro = {
+  name: "Sanchit Jain",
+  email: "jainsanchit@",
+  age: "21",
+  gender: "Male",
+  address: "Delhi",
+  contactInfo: "9891320698",
+  allergies: "Tonsils",
+  DOB: "2002-11-14",
+};

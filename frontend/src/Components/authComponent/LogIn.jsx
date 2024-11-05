@@ -81,8 +81,13 @@ export default function Login({ state, handlePatient, handleDoctor }) {
     }
     const resData = await response.json();
     // console.log("FORM DATA - " + formData.email);
-    console.log("LOGIN SUCCESSFUL!");
-    console.log(resData);
+    // console.log("LOGIN SUCCESSFUL!");
+    // console.log(resData);
+    const token = resData.token;
+    localStorage.setItem("token", token);
+    const expiration = new Date();
+    expiration.setHours(expiration.getDate() + 7);
+    localStorage.setItem("expiration", expiration.toISOString());
     navigate("/patient/me/home");
   };
 

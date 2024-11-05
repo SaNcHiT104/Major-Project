@@ -2,13 +2,16 @@ import AppointMentHeader from "./AppointMentHeader.jsx";
 import classes from "./Appointment.module.css";
 import AppointmentCard from "./AppointmentCard.jsx";
 import { useState } from "react";
-import { fetchPatientUpcomingAppointments } from "../../util/appointment.js";
-import { useQuery } from "@tanstack/react-query";
-import { upcomingAppointments, pastAppointments } from "../../util/data.js";
+import {
+  fetchPatientUpcomingAppointments,
+  updateAppointmentStatus,
+} from "../../util/appointment.js";
+import { queryClient } from "../../util/http.js";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import LoadingIndicator from "../../UI/LoadingIndicator.jsx";
+import ErrorBlock from "../../UI/ErrorBlock.jsx";
 export default function Appointment() {
   const [upcoming, changeUpcoming] = useState(true);
-  const [upcomingArray, changeUpcomingArray] = useState(upcomingAppointments);
-  const [pastArray, changePastArray] = useState(pastAppointments);
   const {
     data: content,
     isPending,
@@ -18,15 +21,24 @@ export default function Appointment() {
     queryFn: () => fetchPatientUpcomingAppointments(!upcoming),
     queryKey: ["patient"],
   });
-  console.log({ content });
+  const {
+    data: mutateData,
+    mutate,
+    isError: mutateError,
+    error: mutateer,
+  } = useMutation({
+    mutationFn: updateAppointmentStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["patient"],
+      });
+    },
+  });
+
   function handleRemove(id) {
-    const pastfilteredArray = upcomingArray.find((obj) => obj.id == id);
-    changePastArray((prev) => [...prev, pastfilteredArray]);
-    const upcomingfilteredArray = upcomingArray.filter((obj) => obj.id !== id);
-    changeUpcomingArray(upcomingfilteredArray);
+    mutate({ id: id });
   }
-  // console.log(pastArray);
-  // console.log(upcomingArray);
+
   function upcomingAppointmentHandler() {
     changeUpcoming(true);
   }
@@ -34,22 +46,54 @@ export default function Appointment() {
     changeUpcoming(false);
   }
   let data;
-
-  if (upcoming) {
-    data = pastArray.map((obj) => (
+  if (isPending) {
+    data = (
+      <div className="ringCenter">
+        <LoadingIndicator />;
+      </div>
+    );
+  }
+  let isDataPresent;
+  if (isError) {
+    data = (
+      <ErrorBlock
+        title={"Was not able to fetch appointments"}
+        message={error.info?.message || "Failed to fetch "}
+      />
+    );
+  }
+  if (content && upcoming) {
+    const upcomingAppointments = content.appointments.filter((obj) => {
+      return obj.status === false;
+    });
+    data = upcomingAppointments.map((obj) => (
       <AppointmentCard
-        key={obj.id}
+        key={obj._id}
         obj={obj}
         state={upcoming}
         handleRemove={() => {
-          handleRemove(obj.id);
+          handleRemove(obj._id);
         }}
       />
     ));
+    if (upcomingAppointments.length === 0) isDataPresent = true;
   } else {
-    data = upcomingArray.map((obj) => (
-      <AppointmentCard key={obj.id} obj={obj} state={upcoming} />
-    ));
+    if (content && !upcoming) {
+      const pastAppointments = content.appointments.filter((obj) => {
+        return obj.status === true;
+      });
+      data = pastAppointments.map((obj) => (
+        <AppointmentCard
+          key={obj._id}
+          obj={obj}
+          state={upcoming}
+          handleRemove={() => {
+            handleRemove(obj.id);
+          }}
+        />
+      ));
+      if (pastAppointments.length === 0) isDataPresent = true;
+    }
   }
   return (
     <div className={classes.container}>
@@ -58,6 +102,12 @@ export default function Appointment() {
         pastAppointmentHandler={pastAppointmentHandler}
         upcoming={upcoming}
       />
+      {upcoming && isDataPresent && (
+        <p className={classes.appoint}>No upcoming appointments</p>
+      )}
+      {!upcoming && isDataPresent && (
+        <p className={classes.appoint}>No past appointments</p>
+      )}
       {data}
     </div>
   );
