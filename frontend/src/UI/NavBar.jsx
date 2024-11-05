@@ -1,11 +1,9 @@
 import classes from "./NavBar.module.css";
-import { NavLink, useLocation } from "react-router-dom";
-import img from "../assets/logo.jpg";
+import { NavLink } from "react-router-dom";
 export default function NavBar() {
-  const location = useLocation();
   return (
     <nav className={classes.header}>
-      <img src={img} className={classes.logo} alt="Logo"></img>
+      <img src="" alt="Logo"></img>
       <div className={classes.innerContainer}>
         <button className={classes.allnav}>
           <NavLink
@@ -18,25 +16,14 @@ export default function NavBar() {
           </NavLink>
         </button>
         <button className={classes.allnav}>
-          {location.pathname.includes("patient") ? (
-            <NavLink
-              to="/patient/me/findAdoctor"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              <span>Find a Doctor</span>
-            </NavLink>
-          ) : (
-            <NavLink
-              to="/doctor/me/appointment"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              <span>Appointments</span>
-            </NavLink>
-          )}
+          <NavLink
+            to="/patient/me/findAdoctor"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            <span>Find a Doctor</span>
+          </NavLink>
         </button>
         <button className={classes.allnav}>
           <NavLink

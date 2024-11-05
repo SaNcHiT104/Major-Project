@@ -1,6 +1,6 @@
 import express from "express";
 import checkAuthMiddleware from "../middlewares/auth.js";
-import Appointment from '../database/AppointmentModel/PatientAppointments.js'
+import Appointment from "../database/AppointmentModel/PatientAppointments.js";
 
 const appointmentRouter = new express.Router();
 
@@ -41,15 +41,19 @@ appointmentRouter.get(
   async (req, res) => {
     try {
       const ownerId = req.user._id;
+      const status = req.status;
       // fetch all appointments of this user with this ownerId
       // as this user exists, checked in middleware, this request will not fail, it can though return null
       // populate() - Replace the 'doctor' with doctor profile so that patient can see doctor's info,
       // do the above for all appointments
-      const appointments = await Appointment.find({ owner: ownerId }).lean();
+      const appointments = await Appointment.find({
+        owner: ownerId,
+        status: status
+      }).lean();
       // console.log(appointments);
       for (let i = 0; i < appointments.length; i++) {
         // console.log(typeof(appointments[i]));
-        await Appointment.populate(appointments[i], {path: 'doctor'});
+        await Appointment.populate(appointments[i], { path: "doctor" });
       }
       return res.status(200).json({
         message: `Appointments found: ${appointments.length}`,
@@ -75,7 +79,7 @@ appointmentRouter.get(
       const appointments = await Appointment.find({ doctor: doctorId });
       for (let i = 0; i < appointments.length; i++) {
         // console.log(typeof(appointments[i]));
-        await Appointment.populate(appointments[i], {path: 'owner'});
+        await Appointment.populate(appointments[i], { path: "owner" });
       }
       return res.status(200).json({
         message: `Appointments found: ${appointments.length}`,

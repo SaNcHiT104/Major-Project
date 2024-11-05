@@ -1,11 +1,9 @@
 import classes from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import img from "../assets/logo.jpg";
 export default function NavBarDoctor() {
   return (
     <nav className={classes.header}>
-      <img src={img} className={classes.logo} alt="Logo"></img>
-
+      <img src="" alt="Logo"></img>
       <div className={classes.innerContainer}>
         <button className={classes.allnav}>
           <NavLink

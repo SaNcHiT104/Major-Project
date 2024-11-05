@@ -7,7 +7,6 @@ import {
   isEmailCorrect,
   isPasswordCorrect,
   isUserTypeCorrect,
-  users,
 } from "./authHandler";
 import RadioGroup from "./RadioGroup";
 
