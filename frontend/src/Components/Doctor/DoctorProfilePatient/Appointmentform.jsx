@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import './Appointmentform.css'
+
+import classes from './Appointmentform.module.css'
 
 export default function Appointmentform() {
     const [didEdit,setDidEdit]=useState({
@@ -49,10 +50,10 @@ export default function Appointmentform() {
         })
     }
   return (
-    <div className="registerform">
-        <form className="innerloginform" onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="head">Full Name</div>
+    <div className={classes.registerform}>
+        <form className={classes.innerloginform} onSubmit={handleSubmit}>
+            <div className={classes.row}>
+                <div className={classes.head}>Full Name</div>
                 <input 
                     type="text" 
                     name="fullname" 
@@ -60,9 +61,9 @@ export default function Appointmentform() {
                     onChange={(event)=>handleInput('fullname',event)}
                     />
             </div>
-            <div className="row-phonenumber">
+            <div className={classes['row-phonenumber']}>
                 <div>
-                    <div className="head">Phone Number</div>
+                    <div className={classes.head}>Phone Number</div>
                     <input 
                         type="text"
                         name="phonenumber" 
@@ -70,11 +71,11 @@ export default function Appointmentform() {
                         value={enteredValues.phonenumber}
                         onChange={(event)=>handleInput('phonenumber',event)}/>
                 </div>
-                <div className="control-error">{phoneIsValid && <p>Please enter a 10 digit phone number </p>}</div>
+                <div className={classes['control-error']}>{phoneIsValid && <p>Please enter a 10 digit phone number </p>}</div>
             </div>
-            <div className="row-email">
+            <div className={classes['row-email']}>
                 <div>
-                    <div className="head">Enter email</div>
+                    <div className={classes.head}>Enter email</div>
                     <input 
                     type="email"
                     name="email" 
@@ -82,18 +83,18 @@ export default function Appointmentform() {
                     value={enteredValues.email}
                     onChange={(event)=>handleInput('email',event)}/>
                 </div>
-                <div className="control-error">{emailIsInvalid && <p>Please enter a valid email address</p>}</div>
+                <div className={classes['control-error']}>{emailIsInvalid && <p>Please enter a valid email address</p>}</div>
             </div>
-            <div className="row">
-                <div className="head"> Date</div>
+            <div className={classes.row}>
+                <div className={classes.head}> Date</div>
                 <input 
                     type="date"
                     name="date" 
                     value={enteredValues.date}
                     onChange={(event)=>handleInput('date',event)}/>
             </div>
-            <div className="row">
-                <div className="head"> Purpose of Appointment</div>
+            <div className={classes.row}>
+                <div className={classes.head}> Purpose of Appointment</div>
                 <input 
                     type="text"
                     name="purpose" 
@@ -101,8 +102,8 @@ export default function Appointmentform() {
                     onChange={(event)=>handleInput('purpose',event)}/>
             </div>
             <br/>
-            <button className="book_button">Book Appointment</button>
+            <button className={classes['book_button']}>Book Appointment</button>
         </form>
     </div>
-  )
+    )
 }

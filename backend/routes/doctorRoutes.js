@@ -4,6 +4,26 @@ import checkAuthMiddleware from "../middlewares/auth.js";
 
 const doctorRouter = new express.Router();
 
+doctorRouter.get(
+  "/doctor/me/profile",
+  checkAuthMiddleware(["DOCTOR"]),
+  async (req, res) => {
+    // first check credentials: TODO
+    const userId = req.user._id;
+    // console.log(userId);
+    try {
+      const user = await Doctor.findById({_id: userId});
+      if (!user) {
+        return res.status(404).send("USER NOT FOUND! STATUS CODE 404!");
+      }
+      res.status(200).send(user);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+    // The profile data sent by the user must be updated in the database
+  }
+);
+
 doctorRouter.patch(
   "/doctor/me/profile",
   checkAuthMiddleware(["DOCTOR"]),

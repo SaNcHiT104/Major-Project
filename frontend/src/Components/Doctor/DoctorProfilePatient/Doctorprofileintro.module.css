@@ -6,7 +6,7 @@
 }
 .Doctorprofilename
 {
-    color:rgb(167, 167, 167);
+    color: var(--color-btnactive-background);
     font-size:40px;
 }
 .Doctorprofiledetais
@@ -15,7 +15,7 @@
 }
 .Doctorprofilelocation
 {
-    color:#F04E2F;
+    color:var(  --color-btnactive-background);
     font-size:20px;
 }
 .Doctorprofileimg 
@@ -45,5 +45,5 @@
 }
 .right-side
 {
-    width: 50%;
+    width: 30%;
 }

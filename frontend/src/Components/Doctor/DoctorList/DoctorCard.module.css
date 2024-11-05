@@ -1,0 +1,167 @@
+.doctorlist_cards
+{
+    margin-top: 40px;
+}
+.doctorlist_card
+{
+    /* box-shadow:  rgba(14, 1, 1, 0.822); */
+    box-shadow: 1px 1px rgba(14, 1, 1, 0.034);
+  /* border: 1px solid rgba(0, 0, 0, 0.294); */
+  height:400px;
+  margin-bottom: 20px;
+  width:400px;
+  border-radius: 10px;
+  padding:20px 0px;
+  margin-left: 30px;
+  background-color: white;
+}
+.doctorlist_card .doctorlist_top
+{
+  width:100%;
+  display: flex;
+}
+.doctorlist_top .doctorlist_left
+{
+  width: 30%;
+}
+.doctorlist_left img{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+
+}
+.doctorlist_top .doctorlist_right
+{
+  width:70%;
+}
+.name
+{
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  color: var(--text);
+  /* -webkit-text-size-adjust: none; */
+}
+.post
+{
+  color: var(--text);
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.field
+{
+  margin-right:30px;
+  color:var(--text);
+}
+.profile
+{
+  color: var(--primary);
+}
+.location{
+  color:var(--text);
+  font-size: 18px;
+}
+.row1
+{
+  display: flex;
+}
+.bottom-row
+{
+  display: flex;
+}
+.expertise
+{
+  font-size: 16px;
+  margin-right: 50px;
+  margin-left:20px;
+}
+.expertise,.profile:hover{
+  color:BLUE;
+  border-bottom: 2px solid BLUE;
+  cursor: pointer;
+}
+.qualification
+{
+  font-size: 16px;
+}
+.qualification:hover{
+  cursor: pointer;
+  color:BLUE;
+  border-bottom: 2px solid BLUE;
+}
+.card-button button:hover {
+  background-color: rgb(38, 39, 136);
+  box-shadow: 0px 15px 20px rgba(48, 41, 148, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+
+.bottom-content
+{
+  margin-top:40px;
+  display:flex;
+  flex-wrap: wrap;
+
+}
+.Button 
+{
+  margin-left: 55px;
+  margin-top:20px;
+
+  
+}
+.Button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.Button:hover {
+  background-color: BLUE;
+  box-shadow: 0px 15px 20px rgba(90, 100, 236, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.Button:active {
+  transform: translateY(-1px);
+}
+.qualificationlist li
+{
+  color:var(--text);
+  line-height: 30px;
+}
+.specilisationlist li
+{
+  color:var(--text);
+  line-height: 30px;
+}
+.bottom-content
+{
+  margin-top:10px;
+  margin-left: 30px;
+}
+.bottom-row
+{
+  margin-top:15px;
+}
+.doctorlist_top{
+  margin-bottom: 10px;
+}
+.locationlist
+{
+  margin-top: 40px;
+}

@@ -38,7 +38,7 @@
     border-radius: 15px;
 }
 .card :hover{
-    background-color: #F04E2F;
+    background-color: var(--color-btnactive-background);
 }
 .card1
 {

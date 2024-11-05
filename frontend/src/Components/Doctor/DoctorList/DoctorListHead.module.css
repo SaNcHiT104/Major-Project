@@ -1,0 +1,83 @@
+:root {
+    --primary: #F04E30;
+    --text: #58595B;
+    --light-text: #454545;
+    --black: #000000;
+    --white: #FFFFFF;
+    --bg-back: #F6F6F6;
+}
+.doctorlisthead
+{
+    background-color: var(--bg-back);
+}
+.Liststart
+{
+    position: relative;
+    height: 400px;
+    background-color: blue;
+}
+.doctorlist_image{
+    
+    width: 100%;
+    height: 400px;
+}
+.doctorlist_image img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.doctortext
+{
+    width: 100%;
+    top: 20%;
+    font-size: 80px;
+    position:absolute;
+    color:white;
+    text-align: center;
+}
+.locationlist
+{
+    /* background-color: #F6F6F6; */
+    margin-top: 20px;
+    display:flex;
+    justify-content: space-evenly;
+    
+}
+
+.button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .button:hover {
+    background-color: blue;
+    box-shadow: 0px 15px 20px rgba(88, 85, 238, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .button:active {
+    transform: translateY(-1px);
+  }
+
+.Doctor-display
+{
+    margin-top:50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 60px;
+    margin-right: 20px;
+    background-color: #F6F6F6;
+}

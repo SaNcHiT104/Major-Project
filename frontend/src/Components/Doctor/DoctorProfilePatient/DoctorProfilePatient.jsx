@@ -17,7 +17,8 @@ export default function FindADoctor() {
       <Doctorexpertise />
       <Doctorfaq />
       <Doctoreview />
-      {/* <Appointmentform/> */}
+      {/* <DoctorList/> */}
+      {/* <DoctorList/> */}
     </>
   );
 }

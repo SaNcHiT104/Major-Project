@@ -36,13 +36,8 @@ const patientSchema = new mongoose.Schema({
     },
   },
   address: { type: String, trim: true },
-<<<<<<< Updated upstream
   allergies: {type: String},
   DOB: {type: Date},
-=======
-  allergies: { type: String },
-  DOB: { type: Date },
->>>>>>> Stashed changes
   tokens: {
     token: {
       type: String,
