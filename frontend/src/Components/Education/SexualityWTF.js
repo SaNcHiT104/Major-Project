@@ -10,16 +10,6 @@ const SexualityWTF = () => {
           <div>
             <div>
               <div itemprop="articleBody">
-                <img
-                  itemprop="image"
-                  style={{
-                    width: "200px",
-                    height: "180px",
-                    float: "right",
-                  }}
-                  src="https://www.scarleteen.com/sites/files/scarleteen/styles/article_image/public/WTF-sexuality-v2.jpg?itok=gpCA0xIO"
-                  alt=""
-                />
                 <p>
                   The term "sexuality" can be used a lot like the word{" "}
                   <a href="http://www.scarleteen.com/article/advice/whats_sex">
@@ -380,7 +370,7 @@ There are all kinds of relationships: family relationships, friendships, romanti
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/stcircles2_sm.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/stcircles2_sm.jpg"
                     alt="small circles"
                     align="right"
                     style={{ width: "350px" }}

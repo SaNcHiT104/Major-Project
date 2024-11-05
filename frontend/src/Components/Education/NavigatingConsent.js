@@ -18,19 +18,6 @@ const NavigatingConsent = () => {
           </h1>
           <div>
             <div>
-              <div>
-                <img
-                  itemprop="image"
-                  style={{
-                    width: "200px",
-                    height: "180px",
-                    float: "right",
-                  }}
-                  src="https://www.scarleteen.com/sites/files/scarleteen/styles/article_image/public/article_images/driver%27s%20ed%20%281%29.png?itok=FuvtZzWJ"
-                  alt=""
-                />
-              </div>
-
               <p>
                 Most of us understand being in transit means there's a
                 possibility of getting hurt, hurting others, having a good time
@@ -687,7 +674,7 @@ const NavigatingConsent = () => {
           <h4>
             <img
               alt=""
-              src="http://www.scarleteen.com/sites/files/scarleteen/images/ryg3.jpg"
+              src="https://www.scarleteen.com/sites/default/files/images/ryg3.jpg"
               style={{
                 width: "142px",
                 height: "370px",

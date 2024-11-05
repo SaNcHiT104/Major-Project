@@ -18,22 +18,6 @@ const SexualAnatomy = () => {
           </h1>
           <div>
             <div>
-              <div>
-                <img
-                  style={{
-                    width: "200px",
-                    height: "180px",
-                    float: "right",
-                  }}
-                  itemprop="image"
-                  src="https://www.scarleteen.com/sites/files/scarleteen/styles/article_image/public/article_images/withpleasure_0.jpg?itok=wCg4hSyK"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>{" "}
-          <div>
-            <div>
               <div itemprop="articleBody">
                 {" "}
                 <p>
@@ -188,7 +172,7 @@ const SexualAnatomy = () => {
                   <br />
                   <img
                     alt="the brain: where size really does matter"
-                    src="https://www.scarleteen.com/sites/files/scarleteen/Brain.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/Brain.jpg"
                     style={{
                       marginLeft: "5px",
                       marginRight: "5px",
@@ -638,7 +622,7 @@ const SexualAnatomy = () => {
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/The-Anus-and-Prostate.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/The-Anus-and-Prostate.jpg"
                     alt="pleasure_anus"
                     title="(Your anus is in the same place if you don't have a penis.)"
                     align="right"
@@ -703,7 +687,7 @@ const SexualAnatomy = () => {
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/Pudendal-Nerves.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/Pudendal-Nerves.jpg"
                     alt="pleasure_nerves"
                     title="You've got some nerves!"
                     align="left"
@@ -866,7 +850,7 @@ const SexualAnatomy = () => {
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/The-Penis.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/The-Penis.jpg"
                     alt="pleasure_penis"
                     title="You've got some nerves!"
                     align="left"
@@ -964,7 +948,7 @@ const SexualAnatomy = () => {
                   didn't have the most current information.
                   <br />
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/Circumcised-vs-Uncircumcised.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/Circumcised-vs-Uncircumcised.jpg"
                     alt="pleasure_circ"
                     title="You've got some nerves!"
                     align="right"
@@ -1077,7 +1061,7 @@ const SexualAnatomy = () => {
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/Clitoris-V2.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/Clitoris-V2.jpg"
                     alt="pleasure_clitoris"
                     title="It's so much more than just the glans!"
                     align="left"
@@ -1217,7 +1201,7 @@ const SexualAnatomy = () => {
                 </p>
                 <p>
                   <img
-                    src="https://www.scarleteen.com/sites/files/scarleteen/images/Where-is-That-G-Spot.jpg"
+                    src="https://www.scarleteen.com/sites/default/files/images/Where-is-That-G-Spot.jpg"
                     alt="pleasure_g"
                     title="(I know I left it somewhere around here.)"
                     align="right"

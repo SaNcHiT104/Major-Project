@@ -102,17 +102,20 @@ authRouter.post(
 authRouter.post("/decodeToken", async (req, res) => {
   try {
     const token = req.body.token;
+    // console.log("TOKEN" + token);
     if (!token) {
       return res.status(401).json({ message: "Unauthorized: Missing token" });
     }
+    // console.log(token);
     try {
       const decodedToken = jwt.verify(token, KEY);
+      // send the userType to the frontend, if we need the id, we can send that also.
+      return res.status(200).json({ userType: decodedToken.userType, userId: decodedToken._id });
     } catch (error) {
       return res.status(401).json({ message: "Unauthorized: Invalid token" });
     }
-    // send the userType to the frontend, if we need the id, we can send that also.
-    return res.status(200).json({ userType: decodedToken.userType });
   } catch (error) {
+    console.log("ERROR OCCURED!");
     return res.status(500).json({ error: "INTERNAL SERVOR ERROR!" });
   }
 });

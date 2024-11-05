@@ -18,7 +18,7 @@ import SexualAnatomy from "./Components/Education/SexualAnatomy.js";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./util/http.js";
+// import { queryClient } from "./util/appointment.js";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -35,31 +35,6 @@ export default function App() {
         {
           path: "login",
           element: <WelcomePage />,
-        },
-        {
-          path: "education",
-          children: [
-            {
-              index: true,
-              element: <Education />,
-            },
-            {
-              path: "sexuality_wtf_is_it_anyway",
-              element: <SexualityWTF />,
-            },
-            {
-              path: "pregnancy_panic",
-              element: <PregnancyPanic />,
-            },
-            {
-              path: "navigating_consent",
-              element: <NavigatingConsent />,
-            },
-            {
-              path: "sexual_anatomy",
-              element: <SexualAnatomy />,
-            },
-          ],
         },
         {
           path: "patient/:id",
@@ -87,10 +62,35 @@ export default function App() {
                 }
               ]
             },
+            {
+              path: "education",
+              children: [
+                {
+                  index: true,
+                  element: <Education />,
+                },
+                {
+                  path: "sexuality_wtf_is_it_anyway",
+                  element: <SexualityWTF />,
+                },
+                {
+                  path: "pregnancy_panic",
+                  element: <PregnancyPanic />,
+                },
+                {
+                  path: "navigating_consent",
+                  element: <NavigatingConsent />,
+                },
+                {
+                  path: "sexual_anatomy",
+                  element: <SexualAnatomy />,
+                },
+              ],
+            },
           ],
         },
         {
-          path: "doctor/me",
+          path: "doctor/:id",
           element: <DoctorRoot />,
           children: [
             {
@@ -105,12 +105,38 @@ export default function App() {
               path: "appointment",
               element: <Appointment />,
             },
+            {
+              path: "education",
+              children: [
+                {
+                  index: true,
+                  element: <Education />,
+                },
+                {
+                  path: "sexuality_wtf_is_it_anyway",
+                  element: <SexualityWTF />,
+                },
+                {
+                  path: "pregnancy_panic",
+                  element: <PregnancyPanic />,
+                },
+                {
+                  path: "navigating_consent",
+                  element: <NavigatingConsent />,
+                },
+                {
+                  path: "sexual_anatomy",
+                  element: <SexualAnatomy />,
+                },
+              ],
+            },
           ],
         },
       ],
     },
   ]);
 
+  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

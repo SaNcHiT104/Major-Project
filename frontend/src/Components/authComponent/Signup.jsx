@@ -9,6 +9,7 @@ import {
   isUserTypeCorrect,
 } from "./authHandler";
 import RadioGroup from "./RadioGroup";
+import { getDecodedTokenInfoFromToken} from "../../util/http";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -96,7 +97,16 @@ const SignUp = () => {
     const expiration = new Date();
     expiration.setHours(expiration.getDate() + 7);
     localStorage.setItem("expiration", expiration.toISOString());
-    navigate("/patient/me/home");
+    // get the userType and id and based on that navigate to that home page.
+    const decodedToken = await getDecodedTokenInfoFromToken(token);
+    // console.log(decodedToken.userType + decodedToken.userId);
+    localStorage.setItem("userType", decodedToken.userType);
+    localStorage.setItem("userId", decodedToken.userId);
+    if (decodedToken.userType === "PATIENT") {
+      navigate(`/patient/${decodedToken.userId}/home`);
+    } else if (decodedToken.userType === "DOCTOR") {
+      navigate(`/doctor/${decodedToken.userId}/home`);
+    }
   };
 
   function formDataChangeHandler(identifier, event) {

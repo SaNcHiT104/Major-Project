@@ -13,7 +13,7 @@ patientRouter.get(
     const userId = req.user._id;
     // console.log(userId);
     try {
-      const user = await Patient.findById({_id: userId});
+      const user = await Patient.findById({ _id: userId });
       if (!user) {
         return res.status(404).send("USER NOT FOUND! STATUS CODE 404!");
       }
@@ -63,6 +63,11 @@ patientRouter.get(
         const rating = parseInt(req.query.rating);
         queries.totalRating = { $gte: rating };
       }
+      // City filtering using regular expression for flexibility
+      if (req.query.cityName) {
+        const cityRegex = new RegExp(req.query.cityName, "i"); // Case-insensitive search
+        queries.officeAddress = { $regex: cityRegex };
+      }
       const doctors = await Doctor.find(queries);
       return res
         .status(200)
@@ -93,7 +98,8 @@ patientRouter.patch(
       let doctor = await Doctor.findById(doctorId);
       /* I can then find the doctor and fetch him, update his rating and save him */
       // Calculate new total rating and rating count
-      const newTotalRating = doctor.totalRating * doctor.ratingCount + newRating;
+      const newTotalRating =
+        doctor.totalRating * doctor.ratingCount + newRating;
       const newRatingCount = doctor.ratingCount + 1;
 
       // Calculate new average rating with 2 decimal places
@@ -103,7 +109,9 @@ patientRouter.patch(
         totalRating: newAverageRating,
         ratingCount: newRatingCount,
       });
-      res.status(200).json({ message: "Doctor rated successfully!", doctor: doctor });
+      res
+        .status(200)
+        .json({ message: "Doctor rated successfully!", doctor: doctor });
     } catch (error) {
       console.error("Error occured!", error);
       return res.status(500).json({ error: "Internal server error" });

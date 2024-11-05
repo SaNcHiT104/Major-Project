@@ -16,16 +16,6 @@ const PregnancyPanic = () => {
             and pull it together so you can get through a scare without losing
             your mind and your well-being in the process.
           </p>
-          <img
-            style={{
-              width: "200px",
-              height: "180px",
-              float: "right",
-            }}
-            itemprop="image"
-            src="https://www.scarleteen.com/sites/files/scarleteen/styles/article_image/public/walkthrough_7.jpg?itok=r9JStEEU"
-            alt=""
-          ></img>
           <h4>
             <strong>
               Is your (or a{" "}
@@ -135,7 +125,7 @@ const PregnancyPanic = () => {
           <p>
             <img
               alt=""
-              src="https://www.scarleteen.com/sites/files/scarleteen/PeriodCalendarV2.webp"
+              src="https://www.scarleteen.com/sites/default/files/PeriodCalendarV2.webp"
               style={{
                 width: "400px",
                 height: "169px",
@@ -227,7 +217,7 @@ const PregnancyPanic = () => {
             <strong>
               <img
                 alt=""
-                src="https://www.scarleteen.com/sites/files/scarleteen/PregnancyTestScene.webp"
+                src="https://www.scarleteen.com/sites/default/files/PregnancyTestScene.webp"
                 style={{
                   width: "400px",
                   height: "397px",
@@ -487,7 +477,7 @@ const PregnancyPanic = () => {
             <figure style={{ width: "550px", float: "right" }}>
               <img
                 alt=""
-                src="https://www.scarleteen.com/sites/files/scarleteen/boundary.png"
+                src="https://www.scarleteen.com/sites/default/files/boundary.png"
                 style={{
                   width: "500px",
                   height: "450px",
