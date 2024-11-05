@@ -18,7 +18,7 @@ import SexualAnatomy from "./Components/Education/SexualAnatomy.js";
 import Education from "./Components/Education/Education.jsx";
 import DoctorRoot from "./Components/Doctor/DoctorRoute/DoctorRoot.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { queryClient } from "./util/appointment.js";
+import { queryClient } from "./util/http.js";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -136,7 +136,6 @@ export default function App() {
     },
   ]);
 
-  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
