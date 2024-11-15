@@ -68,6 +68,7 @@ adminSchema.statics.findByCredentials = async (email, password) => {
 
 // hash the user password before saving
 adminSchema.pre("save", async function (next) {
+  // console.log("HELLO!");
   const user = this;
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 8);

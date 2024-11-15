@@ -34,6 +34,9 @@ const appointmentSchema = new mongoose.Schema({
   status: { type: Boolean, default: false, required: true },
 });
 
+// Ensure that an owner can have only one appointment at a particular date
+appointmentSchema.index({ owner: 1, date: 1 }, { unique: true });
+
 // check user credentials using compare method of bcrypt
 appointmentSchema.statics.findByCredentials = async (owner, date) => {
   const user = await Appointment.findOne({ owner, date });

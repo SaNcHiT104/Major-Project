@@ -68,9 +68,32 @@ ehrRouter.patch(
       const updatedEHR = await EHR.findOneAndUpdate(
         { patientId },
         {
-          $push: {
-            diagnosis: req.body?.diagnosis,
-            prescriptions: req.body?.prescriptions,
+          $addToSet: {
+            // Deduplicate diagnosis based on diagnosis & date (excluding _id)
+            diagnosis: req.body.diagnosis
+              ? [
+                  ...new Set(
+                    req.body.diagnosis.map((d) =>
+                      JSON.stringify({ diagnosis: d.diagnosis, date: d.date })
+                    )
+                  ),
+                ].map((d) => JSON.parse(d))
+              : [],
+            // Filter out duplicate prescriptions based on your existing logic (excluding _id)
+            prescriptions: req.body.prescriptions
+              ? [
+                  ...new Set(
+                    req.body.prescriptions.map((p) =>
+                      JSON.stringify({
+                        medication: p.medication,
+                        date: p.date,
+                        dosage: p.dosage,
+                        frequency: p.frequency,
+                      })
+                    )
+                  ),
+                ].map((p) => JSON.parse(p))
+              : [],
           },
           ...updateData,
         },
