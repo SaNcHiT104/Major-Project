@@ -80,7 +80,7 @@ export default function AnimatedRoute() {
 
               children: [
                 {
-                  path: "doctorprofile",
+                  path:":doctorId",
                   element: <DoctorProfilePatient />,
                 },
                 {

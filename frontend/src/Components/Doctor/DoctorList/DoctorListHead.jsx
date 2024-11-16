@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "./DoctorListHead.module.css";
 
@@ -15,6 +15,13 @@ import ErrorBlock from "../../../UI/ErrorBlock.jsx";
 import { fetchDoctorList } from "../../../util/patient.js";
 
 export default function DoctorListHead() {
+  const[disease,setDisease]=useState();
+  const[location,setLocation]=useState();
+  const[rating,setRating]=useState();
+  useEffect(() => {
+    
+  }, [disease,location,rating])
+  // /patient/me/doctor_list
   // console.log(doctorprofile);'
   const { data, isPending, isError, error } = useQuery({
     queryFn: () => fetchDoctorList(),
@@ -77,10 +84,33 @@ export default function DoctorListHead() {
             name="disease"
             whileHover={{ scale: 1.1 }}
           >
-            <option value="">Select Disease</option>
-            <option value="dengue">Dengue</option>
-            <option value="typhoid">Typhoid</option>
-            <option value="fever">Fever</option>
+            <option value="" >Select Disease</option>
+            <option value="dengue" onClick={()=>setDisease("Dengue")}>Dengue</option>
+            <option value="typhoid" onClick={()=>setDisease("Typhoid")}>Typhoid</option>
+            <option value="fever" onClick={()=>setDisease("Fever")}>Fever</option>
+          </motion.select>
+
+          <motion.select
+            className={styles.select}
+            name="location"
+            whileHover={{ scale: 1.1 }}
+          >
+            <option value="">Select Location</option>
+            <option value="Gurgram" onClick={()=>setLocation("Gurgram")}>Gurgram</option>
+            <option value="Patna" onClick={()=>setLocation("Patna")}>Patna</option>
+            <option value="Delhi" onClick={()=>setLocation("Delhi")}>Delhi</option>
+          </motion.select>
+
+
+          <motion.select
+            className={styles.select}
+            name="rating"
+            whileHover={{ scale: 1.1 }}
+          >
+            <option value="">Select Rating</option>
+            <option value="1" onClick={()=>setRating(1)}>1star</option>
+            <option value="2" onClick={()=>setRating(2)}>2star</option>
+            <option value="3" onClick={()=>setRating(3)}>3star</option>
           </motion.select>
         </div>
       </div>

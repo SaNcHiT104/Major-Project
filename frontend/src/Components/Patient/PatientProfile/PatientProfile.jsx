@@ -37,7 +37,7 @@ export default function PatientProfile() {
     changeFormData({
       ...formData,
       name: patientpro?.name,
-      contact: patientpro?.contactInfo,
+      contact: patientpro?.contacInfo,
       email: patientpro?.email,
       address: patientpro?.address,
       gender: patientpro?.gender,

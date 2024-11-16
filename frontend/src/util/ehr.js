@@ -33,6 +33,8 @@ export const updateEhrAfterAppointment = async ({
 }) => {
   // console.log(diagnosis, prescriptions, patientId, "in Ehr");
   try {
+    const diagnosisArray = [];
+    diagnosisArray.push(diagnosis);
     const response = await fetch(`http://localhost:3000/healthhub/updateEHR`, {
       method: "PATCH",
       headers: {
@@ -40,7 +42,7 @@ export const updateEhrAfterAppointment = async ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        diagnosis,
+        diagnosis: diagnosisArray,
         prescriptions,
         patientId,
       }),

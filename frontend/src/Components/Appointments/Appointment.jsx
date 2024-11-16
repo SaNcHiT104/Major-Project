@@ -53,6 +53,7 @@ export default function Appointment() {
     );
   }
   if (content && upcoming) {
+    // console.log(content, "appointment");
     const upcomingAppointments = content.appointments.filter((obj) => {
       return obj.status === false;
     });

@@ -34,14 +34,19 @@ export async function updateAppointmentStatus({ id }) {
 export async function addPrescription() {}
 
 
-export const createPatientAppointment=async({aptData})=>{
+export const createPatientAppointment=async({fullname,contactInfo,email,date,description,doctor})=>{
   try{
+    console.log("This is from arhcie"+doctor);
     const response=await fetch("http://localhost:3000/patient/me/appointment",
     {
       method: "POST",
-      body: {
-        ...aptData,
-      },
+      body:JSON.stringify({
+        contactInfo,
+        email,
+        date,
+        description,
+        doctor,
+      }), 
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,

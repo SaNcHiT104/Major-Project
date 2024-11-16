@@ -18,6 +18,10 @@
   font-weight: 550;
   width: 8rem;
 }
+.full {
+  text-align: center;
+  color: aqua;
+}
 .mainHeading {
   margin-top: 1rem;
   margin-left: 3rem;

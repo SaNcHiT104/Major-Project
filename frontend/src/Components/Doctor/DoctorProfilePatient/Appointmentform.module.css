@@ -1,92 +1,134 @@
 .loginform {
-    
-    border: solid 1px rgba(216,216,216,0.5);
-    border-radius: 4px;
-    font-family: 'Lato';
-    color: var(--color-btnactive-background);
-    width: 400px;
+  border: solid 1px rgba(216, 216, 216, 0.5);
+  border-radius: 4px;
+  font-family: "Lato";
+  color: var(--color-btnactive-background);
+  width: 400px;
 }
-.innerloginform
-{
-    
-    display: flex;
-    flex-direction: column;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.inputcheck
-{
-    padding-bottom: 5px;
-}
-.smallform
-{
-    display: inline;
-    font-size: 13px;
+.formdata {
+  text-align: center;
+  color: grey;
+  font-weight: 350;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
 }
 
-.inputcheck2
-{
-    padding-bottom: 30px;
+.full {
+  text-align: center;
+  font-weight: 400;
+  color: black;
+  font-size: 1.3rem;
+  /* text-align: center; */
+}
+.appointmentBook {
+  margin-bottom: 3rem;
+}
+.fill {
+  text-align: center;
+  color: black;
+  margin-top: 1rem;
+}
+.input {
+  /* border: none; */
+  /* text-align: center; */
+  margin-left: 5rem;
+  margin-top: 0.8rem;
+  height: 2rem;
+  width: 17rem;
+  /* border: solid black 50px; */
+  /* border-radius: 10px; */
+}
+.bookedAppointment {
+  /* background-color: #fff; */
+  color: black;
+  width: 40rem;
+  margin-left: 4rem;
+  text-align: center;
+  margin-top: 12rem;
+  /* margin-bottom: 3rem; */
+  /* text-transform: uppercase; */
+  /* height: 40rem; */
+  font-size: 2rem;
+  border: none;
+}
+.innerloginform {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.inputcheck {
+  padding-bottom: 5px;
+}
+.smallform {
+  display: inline;
+  font-size: 13px;
+}
+
+.inputcheck2 {
+  padding-bottom: 30px;
 }
 
 .registerform {
-    border: solid 1px black;
-    border-radius: 4px;
-    font-family: 'Lato';
-    color: var(--color-btnactive-background);
-    margin: 50px auto;
-    border-radius: 5px;
+  /* border: solid 1px black;
+  text-align: center; */
+  border-radius: 4px;
+  font-family: "Lato";
+  color: var(--color-btnactive-background);
+  margin: 50px auto;
+  border-radius: 5px;
 }
 .control-error {
-    color: red;
-    font-size: 0.8rem;
-    height: 2rem;
-    padding: 0.5rem 0;
-  }
-.row-email,.row-phonenumber
-{
-    display: flex;
+  color: red;
+  font-size: 0.8rem;
+  height: 2rem;
+  padding: 0.5rem 0;
 }
-.row,.row-email,.row-phonenumber
-{
-    margin-bottom: 10px;
+.row-email,
+.row-phonenumber {
+  display: flex;
 }
-.head
-{
-    color:black;
+.row,
+.row-email,
+.row-phonenumber {
+  margin-bottom: 10px;
 }
-.book_button
-{
-    background-color:var(--color-btnactive-background);
-    height:40px;
-    border:none;
-    color:white;
-
+.head {
+  color: black;
+}
+.book_button {
+  margin-left: 2rem;
+  background-color: var(--color-btnactive-background);
+  height: 40px;
+  border: none;
+  color: white;
 }
 
 .book_button {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .book_button:hover {
-    background-color: var(--color-btnactive-background);
-    box-shadow: 0px 15px 20px var(--color-btnactive-background);
-    color: #fff;
-    transform: translateY(-7px);
-  }
-  
-  .book_button:active {
-    transform: translateY(-1px);
-  }
+  margin-top: 0.5rem;
+  margin-bottom: 0.9rem;
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.book_button:hover {
+  background-color: var(--color-btnactive-background);
+  box-shadow: 0px 15px 20px var(--color-btnactive-background);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.book_button:active {
+  transform: translateY(-1px);
+}

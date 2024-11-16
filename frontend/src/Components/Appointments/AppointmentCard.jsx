@@ -9,7 +9,6 @@ export default function AppointmentCard({ obj, state, handleRemove }) {
   function handleCheckChange() {
     handleRemove();
   }
-
   function viewEHRHandler() {
     navigate(`/doctor/${id}/viewEHR/${obj.owner._id}`);
   }
@@ -29,8 +28,8 @@ export default function AppointmentCard({ obj, state, handleRemove }) {
       >
         <div className={classes.mainHeading}>
           <p className={classes.headingContent}>{obj.owner?.name}</p>
-          <p className={classes.headingContent}>{obj.email}</p>
-          <p className={classes.headingContent}>{obj.contactInfo}</p>
+          <p className={classes.headingContent}>{obj.owner?.email}</p>
+          <p className={classes.headingContent}>{obj.owner?.contactInfo}</p>
           <p className={classes.headingContent}>{obj.description}</p>
           <p className={classes.headingContent}>{formattedDate}</p>
         </div>

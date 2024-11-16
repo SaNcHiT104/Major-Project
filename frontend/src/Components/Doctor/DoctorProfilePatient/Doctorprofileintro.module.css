@@ -1,49 +1,49 @@
-.Doctorprofilestart
-{
-    background-color: #F6F6F6;
-    display: flex;
-    width:100%;
+.Doctorprofilestart {
+  background-color: #f6f6f6;
+  display: flex;
+  width: 100%;
 }
-.Doctorprofilename
-{
-    color: var(--color-btnactive-background);
-    font-size:40px;
+.Doctorprofilename {
+  margin-bottom: 2rem;
+  color: var(--color-btnactive-background);
+  font-size: 3rem;
+  line-height: 3rem;
 }
-.Doctorprofiledetais
-{
-    color:rgb(88, 86, 86);
+.Doctorprofiledetais {
+  width: 50rem;
+  margin: 0.4rem;
+  color: rgb(88, 86, 86);
 }
-.Doctorprofilelocation
-{
-    color:var(  --color-btnactive-background);
-    font-size:20px;
+.Doctorprofilelocation {
+  color: var(--color-btnactive-background);
+  font-size: 20px;
 }
-.Doctorprofileimg 
-{
-    /* background-color: goldenrod; */
-    width: 20%;
+.Doctorprofileimg {
+  /* background-color: goldenrod; */
+  width: 30%;
+  height: 20%;
+  margin-top: 6rem;
 }
-.Doctorprofileimg img
-{
-    height: 500px;
-    width:300px;
+.Doctorprofileimg img {
+  height: 15rem;
+  width: 25rem;
+  margin-left: 3rem;
+  margin-right: -5rem;
 }
-.Doctorprofilecontent
-{
-    margin-left:200px;
-    padding-top:100px;
-    /* background-color: pink; */
+.Doctorprofilecontent {
+  margin-left: 8rem;
+  width: 50rem;
+  padding-top: 100px;
+  width: 20rem;
+  /* background-color: pink; */
 }
-.Doctorprofilestart
-{
-    display: flex;
+.Doctorprofilestart {
+  display: flex;
 }
-.left-side
-{
-    display: flex;
-    width:50%;
+.left-side {
+  display: flex;
+  width: 50%;
 }
-.right-side
-{
-    width: 30%;
+.right-side {
+  width: 30%;
 }

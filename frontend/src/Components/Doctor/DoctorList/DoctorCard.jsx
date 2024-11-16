@@ -39,7 +39,7 @@ export default function DoctorCard(props) {
                 <div className={classes.row1}>
                   <div className={classes.field}>{props.field}</div>
                   <motion.div className={classes} whileHover={{ scale: 1.1 }}>
-                    <Link to="doctorprofile">Visit the Profile</Link>
+                    <Link to={`${props.id}`}>Visit the Profile</Link>
                   </motion.div>
                   <div className={classes}>
                     {/* <Link
