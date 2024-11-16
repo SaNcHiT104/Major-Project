@@ -54,9 +54,9 @@ function AppointmentModalForm({ handleClose, handleSubmitLast, isPending }) {
                 >
                   <option value="">Select an option</option>
                   {/* Your dropdown options go here */}
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
+                  <option value="Paracetamol">Paracetamol</option>
+                  <option value="Calpol">Calpol</option>
+                  <option value="Crocin">Crocin</option>
                 </select>
               </label>
             </div>

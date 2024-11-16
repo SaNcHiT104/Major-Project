@@ -2,6 +2,7 @@ import { Link, json, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import classes from "./Login.module.css";
 import styles from "./WelcomePage.module.css";
+import cl from "./Signup.module.css";
 import {
   isConfirmPasswordCorrect,
   isEmailCorrect,
@@ -9,7 +10,7 @@ import {
   isUserTypeCorrect,
 } from "./authHandler";
 import RadioGroup from "./RadioGroup";
-import { getDecodedTokenInfoFromToken} from "../../util/http";
+import { getDecodedTokenInfoFromToken } from "../../util/http";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -174,14 +175,15 @@ const SignUp = () => {
       )}
       <label className={classes.form_heading}>User Type</label>
       <br />
-      <RadioGroup
-        className={classes.radio}
-        options={options}
-        value={formData.userType}
-        setValue={(event) => {
-          formDataChangeHandler("userType", event);
-        }}
-      />
+      <div className={cl.y}>
+        <RadioGroup
+          options={options}
+          value={formData.userType}
+          setValue={(event) => {
+            formDataChangeHandler("userType", event);
+          }}
+        />
+      </div>
       {inputDataError.userType && (
         <p className={classes.correct}>Invalid user type detected!</p>
       )}

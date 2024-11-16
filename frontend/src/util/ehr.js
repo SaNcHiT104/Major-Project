@@ -1,4 +1,4 @@
-export const fetchPatientEHR = async ( patientId ) => {
+export const fetchPatientEHR = async (patientId) => {
   if (!patientId) {
     return null;
   }
@@ -29,8 +29,9 @@ export const fetchPatientEHR = async ( patientId ) => {
 export const updateEhrAfterAppointment = async ({
   diagnosis,
   prescriptions,
-  patientId
+  patientId,
 }) => {
+  // console.log(diagnosis, prescriptions, patientId, "in Ehr");
   try {
     const response = await fetch(`http://localhost:3000/healthhub/updateEHR`, {
       method: "PATCH",
@@ -41,7 +42,7 @@ export const updateEhrAfterAppointment = async ({
       body: JSON.stringify({
         diagnosis,
         prescriptions,
-        patientId
+        patientId,
       }),
     });
 
