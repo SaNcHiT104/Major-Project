@@ -1,0 +1,66 @@
+.mainContainer {
+  margin-top: 8rem;
+  height: 45rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+}
+.heading {
+  margin-left: 35rem;
+  font-size: 3rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+.top {
+  height: 6rem;
+  width: 100%;
+}
+.bottom {
+  height: 45rem;
+  display: flex;
+  flex-direction: row;
+}
+.left {
+  margin-top: 4rem;
+  height: rem;
+  width: 40%;
+  /* background-color: blue; */
+}
+
+.right {
+  height: 32rem;
+  width: 30%;
+  margin-top: 4rem;
+  margin-left: 4rem;
+  background-color: white;
+  width: 55%;
+}
+
+.content {
+  margin-top: 4rem;
+  margin-right: 5rem;
+  margin-bottom: 4rem;
+}
+
+.btn {
+  margin-left: 18rem;
+  padding: 17px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  color: white;
+  background-color: var(--color-primary);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.btn:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}

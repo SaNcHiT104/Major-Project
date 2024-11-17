@@ -19,39 +19,40 @@ export default function EducationSecondComponent() {
         }}
       >
         <EducationSecondComponentCard
-          heading={"welcome"}
+          heading={"Sexuality: WTF Is It, Anyway?"}
           paragraph={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum aliquam aut nobis quo, quibusdam, dolore saepe in esse quaerat omnis rem deleniti amet provident repudiandae qui tempore tempora autem!"
+            "Confused about the vast and complex world of sexuality? This article breaks it down, exploring how it encompasses our bodies, desires, relationships, and more."
           }
           src="sexuality_wtf_is_it_anyway"
         />
         <EducationSecondComponentCard
-          heading={"welcome"}
+          heading={"The Pregnancy Panic Companion"}
           paragraph={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum aliquam aut nobis quo, quibusdam, dolore saepe in esse quaerat omnis rem deleniti amet provident repudiandae qui tempore tempora autem!"
+            "Feeling the panic of a potential pregnancy scare? This guide offers calming advice, next steps, and busts common myths to help you navigate this stressful situation clearly."
           }
           src="pregnancy_panic"
         />
         <EducationSecondComponentCard
-          heading={"welcome"}
+          heading={"Navigating Consent"}
           paragraph={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum aliquam aut nobis quo, quibusdam, dolore saepe in esse quaerat omnis rem deleniti amet provident repudiandae qui tempore tempora autem!"
+            "Unsure about navigating the complexities of sexual consent? This guide breaks it down, explaining what it means, why it matters, and how to ensure a safe and enjoyable sexual experience for everyone involved."
           }
           src="navigating_consent"
         />
         <EducationSecondComponentCard
-          heading={"welcome"}
-          paragraph={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum aliquam aut nobis quo, quibusdam, dolore saepe in esse quaerat omnis rem deleniti amet provident repudiandae qui tempore tempora autem!"
-          }
+          heading={"Sexual Anatomy For Every Body"}
+          paragraph="Pleasure zones are everywhere, and your brain's the real pleasure master.
+          Discover how hormones and experiences shape your desires in this article. "
           src="sexual_anatomy"
         />
       </motion.div>
-      <img
-        src={img}
-        alt="image_of_book_library"
-        className={classes.right}
-      ></img>
+      <div className={classes.imageSection}>
+        <img
+          src={img}
+          alt="image_of_book_library"
+          className={classes.right}
+        ></img>
+      </div>
     </div>
   );
 }

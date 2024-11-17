@@ -87,8 +87,17 @@ export default function DoctorListHead() {
           >
             <option value="">Select Speciality</option>
             <option value="ENT">ENT</option>
-            <option value="Oncologist">Oncologist</option>
+            <option value="Oncology">Oncologist</option>
             <option value="Physician">Physician</option>
+            <option value="Surgery">Surgery</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Psychiatry">Psychiatry</option>
+            <option value="Plastic Surgery">Plastic Surgery</option>
+            <option value="Urology">Urology</option>
+            <option value="Nephrology">Nephrology</option>
+            <option value="Endrocrinology">Endrocrinology</option>
           </motion.select>
 
           <motion.select
@@ -102,6 +111,14 @@ export default function DoctorListHead() {
             <option value="Jaipur">Jaipur</option>
             <option value="Patna">Patna</option>
             <option value="Delhi">Delhi</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Raipur">Raipur</option>
+            <option value="Amritsar">Amritsar</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Ahmedebad">Ahmedebad</option>
           </motion.select>
 
           <motion.select

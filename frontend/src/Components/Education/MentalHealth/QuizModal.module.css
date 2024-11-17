@@ -1,0 +1,79 @@
+.no-scroll {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  font-size: 3rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  margin-left: 20rem;
+  margin-bottom: 2rem;
+}
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 70rem;
+  max-width: 90%;
+  max-height: 80vh; /* Limit modal height to 80% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+.radio {
+  margin-left: 0.5rem;
+  margin-right: 0.4rem;
+}
+.optionGroup {
+  display: flex;
+}
+.quizContainer {
+  margin-bottom: 20px;
+}
+
+.quizQuestion {
+  margin-left: 2rem;
+  margin-bottom: 15px;
+}
+
+.option {
+  margin-left: 2rem;
+}
+.submitBtn {
+  margin-left: 26rem;
+}
+.submitBtn,
+.closeBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+}
+
+.closeBtn {
+  margin-left: 3rem;
+  background-color: #f44336;
+}
+
+.submitBtn:hover,
+.closeBtn:hover {
+  opacity: 0.8;
+}
+
+.pointer {
+  height: 2rem;
+  width: 2rem;
+  background-color: black;
+}

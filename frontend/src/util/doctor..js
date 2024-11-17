@@ -1,5 +1,5 @@
 export async function fetchSingleDoctor(id) {
-  console.log("hello", id);
+  // console.log("hello", id);
   const response = await fetch(
     `http://localhost:3000/patient/me/doctor_list?doctorId=${id}`,
     {
@@ -17,7 +17,7 @@ export async function fetchSingleDoctor(id) {
     throw error;
   }
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 export async function fetchDoctorProfile() {

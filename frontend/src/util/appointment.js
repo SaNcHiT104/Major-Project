@@ -31,12 +31,10 @@ export async function updateAppointmentStatus({ id }) {
   return response.json();
 }
 
-export async function addPrescription() {}
-
 
 export const createPatientAppointment=async({fullname,contactInfo,email,date,description,doctor})=>{
   try{
-    console.log("This is from arhcie"+doctor);
+    // console.log("This is from arhcie"+doctor);
     const response=await fetch("http://localhost:3000/patient/me/appointment",
     {
       method: "POST",
@@ -57,7 +55,7 @@ export const createPatientAppointment=async({fullname,contactInfo,email,date,des
       throw new Error("Could not create appointment");
     }
     const resData = await response.json();
-    console.log("resdata",resData);
+    // console.log("resdata",resData);
     return resData;
   }
   catch (error) {
