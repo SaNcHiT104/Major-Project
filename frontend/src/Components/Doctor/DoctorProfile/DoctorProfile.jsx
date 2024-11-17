@@ -52,7 +52,14 @@ export default function PatientProfile() {
     } else {
       if (isEdit) {
         const allQualification = formData.qualification?.split(", ");
-        formData.qualification = allQualification;
+        const qualificationArr = allQualification.map((obj) => {
+          return obj.toUpperCase();
+        });
+        console.log("doctorsss", qualificationArr);
+        formData.qualification = qualificationArr;
+        formData.specialty = formData.specialty?.toUpperCase();
+        formData.officeAddress = formData.officeAddress?.toUpperCase();
+        console.log("docotr", formData);
         mutate(formData);
       }
       changeIsEdit(!isEdit);

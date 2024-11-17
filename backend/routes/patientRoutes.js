@@ -56,8 +56,13 @@ patientRouter.get(
   async (req, res) => {
     const queries = {};
     try {
+      if (req.query.doctorId) {
+        queries._id = req.query.doctorId;
+      }
       if (req.query.specialty) {
-        queries.specialty = req.query.specialty;
+        // For major project!
+        const specialtyRegex = new RegExp(req.query.specialty, "i"); // Case-insensitive search
+        queries.specialty = specialtyRegex;
       }
       if (req.query.rating) {
         const rating = parseInt(req.query.rating);

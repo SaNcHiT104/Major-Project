@@ -16,13 +16,13 @@ const EHRSchema = new mongoose.Schema({
   diagnosis: {
     type: [
       {
-        date: {
-          type: Date,
-          // required: true,
-        },
         diagnosis: {
           type: String,
           required: true,
+        },
+        date: {
+          type: Date,
+          // required: true,
         },
       },
     ],
@@ -40,11 +40,11 @@ const EHRSchema = new mongoose.Schema({
           type: String,
           required: true,
         },
-        dosage: {
+        frequency: {
           type: String,
           required: true,
         },
-        frequency: {
+        dosage: {
           type: String,
           required: true,
         },

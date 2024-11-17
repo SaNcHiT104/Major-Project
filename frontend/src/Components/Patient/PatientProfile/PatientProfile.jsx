@@ -37,7 +37,7 @@ export default function PatientProfile() {
     changeFormData({
       ...formData,
       name: patientpro?.name,
-      contact: patientpro?.contacInfo,
+      contact: patientpro?.contactInfo,
       email: patientpro?.email,
       address: patientpro?.address,
       gender: patientpro?.gender,
@@ -113,6 +113,7 @@ export default function PatientProfile() {
     content = <LoadingIndicator />;
   } else if (patientpro) {
     // let gendercheck = formData?.gender.toLowerCase();
+    console.log(patientpro, "patient");
     content = (
       <div className={classes.body}>
         <div className={classes.left}>

@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 export default function DoctorCard(props) {
   const [expertise, setExpertise] = useState(true);
   const [quali, setQualification] = useState(false);
+  console.log("doctor list", props);
   function handleExpertise() {
     setExpertise(true);
     setQualification(false);
@@ -19,9 +20,16 @@ export default function DoctorCard(props) {
     setExpertise(false);
   }
 
-  console.log(props);
+  const obj = props.obj;
+  const sp = [obj.specialty];
+  // console.log("doctor Obj", obj);
   return (
-    <motion.div whileHover={{ scale: 1.04 }}>
+    <motion.div
+      whileHover={{ scale: 1.04 }}
+      initial={{ x: -20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className={classes.doctorlist_cards}>
         <div className={classes.doctorlist_card}>
           <div className={classes.doctorlist_top}>
@@ -30,17 +38,22 @@ export default function DoctorCard(props) {
             </div>
             <div className={classes.doctorlist_right}>
               <div className={classes["content-top"]}>
-                <div className={classes.name}>{props.name}</div>
-
+                <div className={classes.name}>{obj.name}</div>
                 <div className={classes.post}>{props.post}</div>
               </div>
               <hr />
               <div className={classes["content-bottom"]}>
                 <div className={classes.row1}>
-                  <div className={classes.field}>{props.field}</div>
-                  <motion.div className={classes} whileHover={{ scale: 1.1 }}>
-                    <Link to={`${props.id}`}>Visit the Profile</Link>
-                  </motion.div>
+                  <div className={classes.location}>{obj.officeAddress}</div>
+
+                  {/* <Link to={`${props.id}`} className={classes.pro}>
+                    <motion.div
+                      className={classes.visit}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      Visit the Profile
+                    </motion.div>
+                  </Link> */}
                   <div className={classes}>
                     {/* <Link
                       to={`/doctor/${userId}/home`}
@@ -52,7 +65,10 @@ export default function DoctorCard(props) {
                   </div>
                 </div>
                 <div className={classes.row2}>
-                  <div className={classes.location}>Gurgram</div>
+                  <div className={classes.field}>{obj.officeContactInfo}</div>
+                </div>
+                <div className={classes.row3}>
+                  <div className={classes.location}>{obj.email}</div>
                 </div>
               </div>
             </div>
@@ -60,28 +76,37 @@ export default function DoctorCard(props) {
           <hr />
           <div className={classes.bottom}>
             <div className={classes["bottom-row"]}>
-              <div className={classes.expertise} onClick={handleExpertise}>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className={classes.expertise}
+                onClick={handleExpertise}
+                id={expertise ? classes.active : undefined}
+              >
                 Specialisation and Expertise
-              </div>
-              <div
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
                 className={classes.qualification}
+                id={!expertise ? classes.active : undefined}
                 onClick={handleQualification}
               >
                 Qualification
-              </div>
+              </motion.div>
             </div>
-            <div className={classes["bottom-content"]}>
-              {expertise && <SpecialisationList sl={props.sl} />}
-              {quali && <QualificationList ql={props.ql} />}
-            </div>
+            <motion.div className={classes["bottom-content"]}>
+              {expertise && <SpecialisationList sl={sp} />}
+              {quali && <QualificationList ql={obj.qualification} />}
+            </motion.div>
           </div>
           <div>
-            <motion.button
-              className={classes.Button}
-              whileHover={{ scale: 1.08 }}
-            >
-              <Link to={`doctorprofile/${props.id}`}>Meet The Doctor</Link>
-            </motion.button>
+            <Link to={`${props.id}`}>
+              <motion.button
+                className={classes.Button}
+                whileHover={{ scale: 1.08 }}
+              >
+                Meet The Doctor
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>

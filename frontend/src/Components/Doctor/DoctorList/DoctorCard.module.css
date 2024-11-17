@@ -30,10 +30,10 @@
 }
 .name {
   font-size: 30px;
-  margin: 0;
-  padding: 0;
+  margin: 2rem;
+  /* padding: 0; */
   font-family: "Montserrat", sans-serif;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   color: var(--text);
   /* -webkit-text-size-adjust: none; */
 }
@@ -43,13 +43,24 @@
   margin-bottom: 20px;
 }
 .field {
-  margin-right: 30px;
+  /* margin-top: 1rem; */
+  /* margin-right: 30px; */
   color: var(--text);
+}
+.pro {
+  text-decoration: none;
+}
+.visit {
+  margin-top: 1.3rem;
+  margin-left: 1rem;
+  text-decoration: none;
 }
 .profile {
   color: var(--primary);
 }
 .location {
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
   color: var(--text);
   font-size: 18px;
 }
@@ -63,20 +74,15 @@
   font-size: 16px;
   margin-right: 50px;
   margin-left: 20px;
-}
-.expertise,
-.profile:hover {
-  color: BLUE;
-  border-bottom: 2px solid BLUE;
   cursor: pointer;
 }
 .qualification {
+  cursor: pointer;
   font-size: 16px;
 }
-.qualification:hover {
-  cursor: pointer;
-  color: BLUE;
-  border-bottom: 2px solid BLUE;
+#active {
+  color: blue;
+  border-bottom: 1px solid blue;
 }
 .card-button button:hover {
   background-color: rgb(38, 39, 136);
@@ -86,6 +92,7 @@
 }
 
 .bottom-content {
+  height: 3rem;
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;

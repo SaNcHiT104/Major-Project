@@ -12,6 +12,7 @@ appointmentRouter.post(
     /* As the middleware ran without error throwing, we have the patient user! 
     The request body will also have the doctor's id so we can store that also! */
     try {
+      console.log(req.body);
       const appointment = new Appointment({
         ...req.body,
         owner: req.user._id,

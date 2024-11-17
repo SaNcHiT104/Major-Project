@@ -1,32 +1,41 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "./DoctorListHead.module.css";
-
-import SpecialisationList from "./SpecialisationList";
-import QualificationList from "./QualificationList";
 import DoctorCard from "./DoctorCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, falocation } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
-import { doctorprofile } from "../../../util/data";
 import { useQuery } from "@tanstack/react-query";
 import LoadingIndicator from "../../../UI/LoadingIndicator.jsx";
 import ErrorBlock from "../../../UI/ErrorBlock.jsx";
 import { fetchDoctorList } from "../../../util/patient.js";
 
 export default function DoctorListHead() {
-  const[disease,setDisease]=useState();
-  const[location,setLocation]=useState();
-  const[rating,setRating]=useState();
-  useEffect(() => {
-    
-  }, [disease,location,rating])
-  // /patient/me/doctor_list
+  const [specialty, setSpecialty] = useState(null);
+  const [cityName, setCityName] = useState(null);
+  const [rating, setRating] = useState(null);
   // console.log(doctorprofile);'
-  const { data, isPending, isError, error } = useQuery({
-    queryFn: () => fetchDoctorList(),
+  const { data, isPending, isError, error, refetch } = useQuery({
+    queryFn: () => fetchDoctorList({ specialty, cityName, rating }),
     queryKey: ["doctorlist"],
+    config: {
+      refetchOnWindowFocus: false, // Prevents automatic refetching on window focus
+    },
   });
+
+  const handleSpecialtyChange = (value) => {
+    setSpecialty(value);
+  };
+
+  const handleCityNameChange = (value) => {
+    setCityName(value);
+  };
+
+  const handleRatingChange = (value) => {
+    setRating(value);
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [specialty, cityName, rating]);
 
   let content;
 
@@ -47,16 +56,7 @@ export default function DoctorListHead() {
   }
   if (data) {
     content = data.doctors?.map((obj) => {
-      return (
-        <DoctorCard
-          id={obj._id}
-          name={obj.name}
-          post={obj.gender}
-          field={""}
-          sl={[]}
-          ql={[]}
-        />
-      );
+      return <DoctorCard id={obj._id} obj={obj} />;
     });
   }
   return (
@@ -83,34 +83,35 @@ export default function DoctorListHead() {
             className={styles.select}
             name="disease"
             whileHover={{ scale: 1.1 }}
+            onChange={(e) => handleSpecialtyChange(e.target.value)}
           >
-            <option value="" >Select Disease</option>
-            <option value="dengue" onClick={()=>setDisease("Dengue")}>Dengue</option>
-            <option value="typhoid" onClick={()=>setDisease("Typhoid")}>Typhoid</option>
-            <option value="fever" onClick={()=>setDisease("Fever")}>Fever</option>
+            <option value="">Select Speciality</option>
+            <option value="ENT">ENT</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Physician">Physician</option>
           </motion.select>
 
           <motion.select
             className={styles.select}
             name="location"
             whileHover={{ scale: 1.1 }}
+            onChange={(e) => handleCityNameChange(e.target.value)}
           >
             <option value="">Select Location</option>
-            <option value="Gurgram" onClick={()=>setLocation("Gurgram")}>Gurgram</option>
-            <option value="Patna" onClick={()=>setLocation("Patna")}>Patna</option>
-            <option value="Delhi" onClick={()=>setLocation("Delhi")}>Delhi</option>
+            <option value="Gurugram">Gurugram</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Patna">Patna</option>
+            <option value="Delhi">Delhi</option>
           </motion.select>
-
 
           <motion.select
             className={styles.select}
             name="rating"
             whileHover={{ scale: 1.1 }}
+            onChange={(e) => handleRatingChange(e.target.value)}
           >
             <option value="">Select Rating</option>
-            <option value="1" onClick={()=>setRating(1)}>1star</option>
-            <option value="2" onClick={()=>setRating(2)}>2star</option>
-            <option value="3" onClick={()=>setRating(3)}>3star</option>
+            <option value="4">4.0+</option>
           </motion.select>
         </div>
       </div>
