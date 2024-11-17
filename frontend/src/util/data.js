@@ -77,7 +77,7 @@ export const doctorprofile = [
     id:"1",
     name: "Sahil Agarwal",
     post: "Chairman",
-    location: "Gurgram",
+    location: "Gur",
     field:"Neuroscience",
     expertise: ["ENT","HEART","CHILD","LIVER"],
     qualification: ["MBBS","MBBS","MBBS","MBBS"],

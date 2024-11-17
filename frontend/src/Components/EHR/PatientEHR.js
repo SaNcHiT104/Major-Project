@@ -5,7 +5,9 @@ import { fetchPatientEHR } from "../../util/ehr.js";
 import { useParams } from "react-router-dom";
 import LoadingIndicator from "../../UI/LoadingIndicator";
 import ErrorBlock from "../../UI/ErrorBlock";
+import styles from "./PatientEHR.module.css";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const PatientEHR = () => {
   const { patientId: pid } = useParams();
@@ -19,6 +21,22 @@ const PatientEHR = () => {
     queryKey: ["getPatientInfo", pid],
     queryFn: () => fetchPatientEHR(pid),
   });
+
+  const [filterArr, setFilterArr] = useState();
+  const [displayType, setDisplayType] = useState("patientData");
+  const handleMedicationChange=(type)=>{
+    // console.log(patientpro.ehr.prescriptions);
+    let arr=patientpro.ehr.prescriptions.filter(val=>val.medication==type)
+    setDisplayType("prescriptionData")
+    setFilterArr(arr);
+    // console.log(arr);
+  }
+
+  const handleHistoryChange=(type)=>{
+    let arr=patientpro.ehr.diagnosis.filter(val=>val.diagnosis==type)
+    setDisplayType("diagnosisData")
+    setFilterArr(arr);
+  }
 
   let content;
 
@@ -48,6 +66,7 @@ const PatientEHR = () => {
 
   content = (
     <>
+      
       {" "}
       {/* Patient Summary Section */}
       <div className={classes["patient-summary"]}>
@@ -137,14 +156,92 @@ const PatientEHR = () => {
     </>
   );
   return (
-    <motion.div
-      className={classes["ehr-container"]}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {content}
-    </motion.div>
+    <>
+    <div className={styles.locationlist}>
+          <motion.select
+            className={styles.select}
+            name="disease"
+            whileHover={{ scale: 1.1 }}
+            onChange={(e) => handleMedicationChange(e.target.value)}
+          >
+            <option value="">Select Medication</option>
+            <option value="Paracetamol">Paracetamol</option>
+            <option value="Metformin">Metformin</option>
+            <option value="Combiflam">Combiflam</option>
+          </motion.select>
+
+          <motion.select
+            className={styles.select}
+            name="location"
+            whileHover={{ scale: 1.1 }}
+            onChange={(e) => handleHistoryChange(e.target.value)}
+          >
+            <option value="">Select Disease</option>
+            <option value="Headache">Headache</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Polio">Polio</option>
+            <option value="Dengue">Dengue</option>
+          </motion.select>
+        </div>
+        {
+          displayType=="patientData" && <motion.div
+          className={classes["ehr-container"]}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {content}
+        </motion.div>
+        }
+        {
+          displayType=="prescriptionData" &&  <div className={classes["medications"]}>
+          <h3>PRESCRIPTIONS</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Medication</th>
+                <th>Dose</th>
+                <th>Frequency</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filterArr.map((medication) => (
+                <tr key={medication._id}>
+                  {" "}
+                  {/* Assuming there's an id property */}
+                  <td>{medication.medication}</td>
+                  <td>{medication.dosage}</td>
+                  <td>{medication.frequency}</td>
+                  {/* Display formatted date */}
+                  <td>
+                    {new Date(medication.date).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        }
+        {
+          displayType=="diagnosisData" && <div className={classes["medical-history"]}>
+          <h3>MEDICAL HISTORY</h3>
+          <ul>
+            {filterArr.map((consultation) => (
+              <MedicalHistoryCard
+                key={consultation._id}
+                date={consultation.date}
+                diagnosis={consultation.diagnosis}
+              ></MedicalHistoryCard>
+            ))}
+          </ul>
+        </div>
+        }
+    </>
   );
 };
 
